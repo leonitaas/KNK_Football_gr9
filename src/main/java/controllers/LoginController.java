@@ -38,10 +38,10 @@ public class LoginController {
         Locale.setDefault(new Locale("de", "DE")); // set default locale to German
     }
 
-//    @FXML e rregullojme
-//    private void handleCreateAccountClick(MouseEvent me){
-//        Navigator.navigate(me, Navigator.CREATE_ACCOUNT_PAGE);
-//    }
+    @FXML
+    private void handleCreateAccountClick(MouseEvent me){
+
+    }
 
 
     @FXML
