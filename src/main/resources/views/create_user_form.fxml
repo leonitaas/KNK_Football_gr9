@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+   <children>
+      <Label layoutX="111.0" layoutY="86.0" text="First Name" />
+      <Label layoutX="112.0" layoutY="127.0" text="Last Name" />
+      <Label layoutX="112.0" layoutY="167.0" text="Email" />
+      <Label layoutX="112.0" layoutY="209.0" prefHeight="18.0" prefWidth="56.0" text="Password" />
+      <Label layoutX="111.0" layoutY="248.0" prefHeight="18.0" prefWidth="96.0" text="Confirm Passwor" />
+      <TextField layoutX="256.0" layoutY="82.0" />
+      <TextField fx:id="txtFirstName" layoutX="257.0" layoutY="82.0" />
+      <TextField fx:id="txtLastName" layoutX="257.0" layoutY="123.0" />
+      <TextField fx:id="txtEmail" layoutX="258.0" layoutY="163.0" />
+      <PasswordField fx:id="pwdPassword" layoutX="259.0" layoutY="206.0" />
+      <PasswordField fx:id="pwdConfirmPassword" layoutX="260.0" layoutY="245.0" />
+      <Text layoutX="159.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User register" wrappingWidth="112.66094970703125">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button layoutX="207.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleSignUp" text="Create" />
+      <Button layoutX="355.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+   </children>
+</AnchorPane>
