@@ -16,6 +16,7 @@ public class DBConnection {
     }
     private DBConnection() {
         this.connection = this.initConnection();
+
     }
     private Connection initConnection() {
         try {
