@@ -1,6 +1,7 @@
 package controllers;
 
 
+import app.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,19 +40,24 @@ public class SignUpController implements Initializable {
 
         boolean response = UserService.signUp(userSignUpData);
 
-//        if(response){
-//            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-//        }
+        if(response){
+            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+        }
 
     }
 
     @FXML
     private void handleCancel(ActionEvent ae){
-//        Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+      Navigator.navigate(ae, Navigator.LOGIN_PAGE);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.lblEmail.setText(resourceBundle.getString("lblEmail"));
+        if (resourceBundle != null) {
+            this.txtEmail.setText(resourceBundle.getString("Email"));
+        } else {
+            System.err.println("ResourceBundle is null");
+        }
     }
+
 }

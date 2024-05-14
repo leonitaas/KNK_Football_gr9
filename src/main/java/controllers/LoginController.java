@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -40,7 +41,7 @@ public class LoginController {
 
     @FXML
     private void handleCreateAccountClick(MouseEvent me){
-
+        Navigator.navigate(me, Navigator.CREATE_ACCOUNT_PAGE);
     }
 
 

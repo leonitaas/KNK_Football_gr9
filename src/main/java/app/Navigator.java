@@ -13,7 +13,7 @@ public class Navigator {
     public static final String LOGIN_PAGE = "/app/login_form.fxml"; // Shtegu nga resources
 
 //    public static final String HOME_PAGE = "home.fxml";
-//    public static final String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
+  public static final String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
 
     public static void navigate(Event event, String form) {
         Node eventNode = (Node) event.getSource();
