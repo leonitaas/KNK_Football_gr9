@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.View">
+   <children>
+      <BorderPane layoutX="1.0" layoutY="1.0" prefHeight="266.0" prefWidth="277.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="44.0" layoutY="1.0" prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #b22222;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="Exit" layoutX="577.0" layoutY="1.0" text="X" textFill="WHITE" AnchorPane.rightAnchor="10.0" />
+                        <Label fx:id="Login" layoutX="545.0" layoutY="4.0" onMouseClicked="#HandleLogin" text="Login" textFill="WHITE" AnchorPane.rightAnchor="25.4" />
+                     </children>
+                  </AnchorPane>
+                  <HBox layoutX="170.0" layoutY="26.0" prefHeight="42.0" prefWidth="484.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets left="50.0" right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="Menu" layoutX="92.0" layoutY="28.0" text="Menu" />
+                  <Label fx:id="MenuBack" layoutX="92.0" layoutY="28.0" text="Menu" />
+                  <ImageView fitHeight="67.0" fitWidth="91.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagess/s/logo-football/futboll.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #b22222;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="38.0" layoutY="36.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                     <children>
+                        <Label text="Admin" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="50.0" top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="League" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="50.0" top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Clubs" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="50.0" top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Matches" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="50.0" top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
