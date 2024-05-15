@@ -6,18 +6,18 @@ public class Standings {
     private League league_id;
     private int matches_played;
     private int wins;
-    private int loses;
+    private int losses;
     private int goals_for;
     private int goals_against;
     private int points;
 
-    public Standings(int id, Team team_id, League league_id, int matches_played, int wins, int draws, int loses, int goals_for, int goals_against, int points) {
+    public Standings(int id, Team team_id, League league_id, int matches_played, int wins, int loses, int goals_for, int goals_against, int points) {
         this.id = id;
         this.team_id = team_id;
         this.league_id = league_id;
         this.matches_played = matches_played;
         this.wins = wins;
-        this.loses = loses;
+        this.losses = losses;
         this.goals_for = goals_for;
         this.goals_against = goals_against;
         this.points = points;
@@ -66,11 +66,11 @@ public class Standings {
     }
 
     public int getLoses() {
-        return loses;
+        return losses;
     }
 
     public void setLoses(int loses) {
-        this.loses = loses;
+        this.losses = loses;
     }
 
     public int getGoals_for() {

@@ -7,13 +7,15 @@ public class Player {
     private String name;
     private String position;
     private Date birthday;
+    private String image;
 
 
-    public Player(int id, String name, String position, Date birthday) {
+    public Player(int id, String name, String position, Date birthday,String image) {
         this.id = id;
         this.name = name;
         this.position = position;
         this.birthday = birthday;
+        this.image=image;  
     }
 
     public int getId() {
@@ -48,9 +50,17 @@ public class Player {
         this.birthday = birthday;
     }
 
-    private League league;
-    private Team team;
+     public String getImage() {
+            return image;   }
 
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+
+        private League league;
+        private Team team;
     public League getLeague() {
         return league;
     }
@@ -58,6 +68,8 @@ public class Player {
     public void setLeague(League league) {
         this.league = league;
     }
+
+
 
     public Team getTeam() {
         return team;
