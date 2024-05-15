@@ -17,7 +17,7 @@ This project is developed from the authors below with full rights.
 
 [Besarta Mustafa](https://github.com/BesartaMustafa1)
 
-[Ereza Teamaj](https://github.com/ereza4)
+[Ereza Temaj](https://github.com/ereza4)
 
 [Kaltrina Kurtaj](https://github.com/kaltrinakurtaj)
 
