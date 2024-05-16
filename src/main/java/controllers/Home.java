@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class View implements Initializable {
+public class Home implements Initializable {
     @FXML
     private Label Exit;
     @FXML
@@ -31,7 +31,7 @@ public class View implements Initializable {
         Exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
-        slider.setTranslateX(-176);
+        slider.setTranslateX(-260);
         Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.4));
@@ -40,9 +40,9 @@ public class View implements Initializable {
             slide.setToX(0);
             slide.play();
 
-            slider.setTranslateX(-176);
+            slider.setTranslateX(-260);
 
-            slide.setOnFinished((ActionEvent e)-> {
+            slide.setOnFinished((ActionEvent e) -> {
                 Menu.setVisible(false);
                 MenuBack.setVisible(true);
             });
@@ -53,20 +53,21 @@ public class View implements Initializable {
             slide.setDuration(Duration.seconds(0.4));
             slide.setNode(slider);
 
-            slide.setToX(-176);
+            slide.setToX(-260);
             slide.play();
 
             slider.setTranslateX(0);
 
-            slide.setOnFinished((ActionEvent e)-> {
+            slide.setOnFinished((ActionEvent e) -> {
                 Menu.setVisible(true);
                 MenuBack.setVisible(false);
             });
         });
     }
+
     @FXML
     void HandleLogin(MouseEvent event) {
         Navigator.navigate(event, Navigator.LOGIN_PAGE);
     }
-}
 
+}

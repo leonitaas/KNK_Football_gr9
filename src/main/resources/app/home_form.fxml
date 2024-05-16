@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+   <children>
+      <BorderPane layoutX="-5.0" prefHeight="611.0" prefWidth="888.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="58.0" prefWidth="876.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="170.0" layoutY="26.0" prefHeight="31.0" prefWidth="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets left="50.0" right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets right="25.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="Menu" layoutX="91.0" layoutY="28.0" text="Menu" />
+                  <Label fx:id="MenuBack" layoutX="91.0" layoutY="28.0" text="Menu" />
+                  <AnchorPane layoutX="4.0" layoutY="1.0" prefHeight="26.0" prefWidth="880.0" style="-fx-background-color: #b22222;" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="1.0">
+                     <children>
+                        <Label fx:id="Exit" layoutX="577.0" layoutY="1.0" text="X" textFill="WHITE" AnchorPane.rightAnchor="10.0" />
+                        <Label fx:id="Login" layoutX="545.0" layoutY="4.0" onMouseClicked="#HandleLogin" text="Login" textFill="WHITE" AnchorPane.rightAnchor="25.4" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+         <AnchorPane fx:id="slider" prefHeight="550.0" prefWidth="250.0" style="-fx-background-color: #b22222;" BorderPane.alignment="CENTER">
+            <children>
+               <fx:include source="navbar_form.fxml" />
+            </children>
+         </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
