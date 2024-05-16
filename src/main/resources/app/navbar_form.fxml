@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <children>
+                <VBox layoutX="36.0" layoutY="164.0" prefHeight="334.0" prefWidth="186.0" styleClass="vbox" stylesheets="@../css/navbar.css">
+                    <children>
+                        <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="home-btn" stylesheets="@../css/navbar.css" text="Home">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="60.0" right="60.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="matchesButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Matches" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="30.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="teamsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Teams" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="30.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="playersButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Players" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="30.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="leaguesButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Leagues" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="30.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Log out" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="50.0" right="50.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+                <AnchorPane layoutX="-86.0" layoutY="-176.0" prefHeight="37.0" prefWidth="186.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagess/s/logo-football/futboll.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

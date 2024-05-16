@@ -1,0 +1,22 @@
+.vbox{
+-fx-background-color: white;
+}
+
+
+.nav-btn{
+-fx-cursor: hand;
+-fx-background-color:#B22222;
+-fx-background-radius: 10;
+
+}
+.nav-btn:hover{
+-fx-background-color: #CD5C5C;
+}
+.home-btn{
+-fx-background-color: #FFDB58;
+-fx-cursor: hand;
+-fx-background-radius: 10;
+}
+.home-btn:hover{
+-fx-background-color: #FBEC5D;
+}
