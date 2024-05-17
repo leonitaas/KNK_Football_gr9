@@ -14,7 +14,7 @@ public class UserRepository {
     public static boolean create(CreateUserDto userData){
     Connection conn = DBConnection.getConnection();
     String query = """
-                INSERT INTO USER (firstName, lastName, email, salt, passwordHash)
+                INSERT INTO users (firstName, lastName, email, salt, passwordHash)
                 VALUE (?, ?, ?, ?, ?)
                 """;
     //String query = "INSERT INTO USER VALUE (?, ?, ?, ?, ?)";
@@ -37,7 +37,7 @@ public class UserRepository {
 
 
     public static User getByEmail(String email){
-        String query = "SELECT * FROM USER WHERE email = ? LIMIT 1";
+        String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
         Connection connection = DBConnection.getConnection();
         try{
             PreparedStatement pst = connection.prepareStatement(query);

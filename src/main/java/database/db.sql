@@ -6,8 +6,8 @@ create table users (
                        fname varchar(30),
                        pass varchar(25),
                        date_create timestamp,
-                       date_modified timestamp,
-                       role enum ('admin' , 'user' )
+                       date_modified timestamp
+                           role enum ('admin' , 'user' )
 );
 
 create table player(
@@ -51,7 +51,7 @@ create table matches(
 
 create table league(
                        id int primary key not null unique auto_increment,
-                       name varchar(30)
+                       name varchar(30),
 
 );
 
@@ -138,11 +138,25 @@ alter table league
     add column season_id int,
     add FOREIGN KEY (season_id) REFERENCES season(id);
 
-alter table League
-    add column leaguelogo text;
+alter table league
+    add column league_logo text;
 
-alter table Team
-    add column logo text;
+alter table team
+    add column team_logo text;
 
 INSERT INTO match_statistics (match_id, home_team_goals, away_team_goals, possession_home, possession_away, shots_home, shots_away, corners_home, corners_away, fouls_home, fouls_away, yellow_cards_home, yellow_cards_away, red_cards_home, red_cards_away)
 VALUES (8, 2, 1, 0.6, 0.4, 10, 5, 8, 3, 12, 7, 2, 3, 0, 1);
+ALTER TABLE users
+    ADD COLUMN firstName VARCHAR(30),
+    ADD COLUMN lastName VARCHAR(30),
+    ADD COLUMN email VARCHAR(50),
+    ADD COLUMN salt VARCHAR(255),
+    ADD COLUMN passwordHash VARCHAR(255);
+
+
+-- dropping the old columns
+ALTER TABLE users
+    DROP COLUMN fname,
+    DROP COLUMN pass,
+    DROP COLUMN date_create,
+    DROP COLUMN date_modified;
