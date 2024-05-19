@@ -1,0 +1,85 @@
+.inputs{
+        -fx-border-color: #ccc;
+        -fx-border-width: 2px;
+        -fx-border-radius: 10px;
+        -fx-text-fill: black;
+        -fx-background-color: #f9f9f9;
+        -fx-faint-focus-color: transparent;
+
+}
+.inputs:hover{
+  -fx-background-color:#B22222;
+}
+
+
+.label{
+ -fx-text-fill: rgb(64, 64, 64);
+ -fx-font-size: 11px;
+ -fx-font-weight: bold;
+ -fx-margin-top: 10px;
+
+
+}
+.combo-box .arrow-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: black;
+    -fx-background-radius: 10px;
+}
+
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: -fx-background-color:#B22222;;
+    -fx-text-fill: white;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 11px;
+}
+
+.combo-box .arrow-button:hover{
+  -fx-background-color:#B22222;
+}
+
+.btn, .btn1 {
+    -fx-background-color: linear-gradient(to bottom, #ffcc00, #ff9900);
+    -fx-text-fill: white;
+    -fx-background-radius: 11px;
+    -fx-border-radius: 10px;
+}
+
+.btn:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff9900, #ff6600);
+    -fx-cursor: hand;
+}
+.green:hover{
+    -fx-background-color:  RGB(0, 128, 0);
+    -fx-cursor: hand;
+}
+.red:hover{
+-fx-background-color:#B22222;
+    -fx-cursor: hand;
+}
+
+.table {
+-fx-background-color:white;
+-fx-border-radius: 0 0 15 15;
+-fx-background-radius: 0 0 15 15;
+
+}
+
+.col{
+-fx-background-color: RGB(211, 211, 211);
+
+}
+
+
+
