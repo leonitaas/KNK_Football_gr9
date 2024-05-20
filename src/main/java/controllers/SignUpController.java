@@ -16,17 +16,19 @@ import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
     @FXML
-    private TextField txtFirstName;
-    @FXML
-    private TextField txtLastName;
-    @FXML
-    private TextField txtEmail;
+    private PasswordField pwdConfirmPassword;
+
     @FXML
     private PasswordField pwdPassword;
+
     @FXML
-    private PasswordField pwdConfirmPassword;
+    private TextField txtEmail;
+
     @FXML
-    private Label lblEmail;
+    private TextField txtFirstName;
+
+    @FXML
+    private TextField txtLastName;
 
     @FXML
     private void handleSignUp(ActionEvent ae){
@@ -42,6 +44,8 @@ public class SignUpController implements Initializable {
 
         if(response){
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+        } else {
+            //logic
         }
 
     }
