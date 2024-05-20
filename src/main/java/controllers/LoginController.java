@@ -23,11 +23,12 @@ public class LoginController {
                 this.pwdPassword.getText()
         );
 
-//        boolean isLogin = UserService.login(loginUserData);
+        boolean isLogin = UserService.login(loginUserData);
 //        User user = UserService.login(loginUserData);
 //        if(user != null){
 //            SessionManager.setUser(user);
-        Navigator.navigate(ae,Navigator.View_Page);
+            Navigator.navigate(ae, Navigator.HOME_PAGE);
+//        }
 
     }
 

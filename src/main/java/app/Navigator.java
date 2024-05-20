@@ -10,13 +10,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Navigator {
-    //  public static final String Hello_PAGE = "/com.example.knk_football/hello-view.fxml";
-    public  static  final String View_Page= "/app/home_form.fxml";
     public static final String LOGIN_PAGE = "/app/login_form.fxml";
 
-
-    public static final String CREATE_ACCOUNT_PAGE = "/app/create_user_form.fxml";
-    //public static final String Hello_PAGE="/com.example.knk_football/hello-view.fxml";
+   public static final String HOME_PAGE = "/app/home_form.fxml";
+  public static final String CREATE_ACCOUNT_PAGE = "/app/create_user_form.fxml";
 
     public static void navigate(Event event, String form) {
         Node eventNode = (Node) event.getSource();
