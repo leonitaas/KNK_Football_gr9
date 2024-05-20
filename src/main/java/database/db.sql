@@ -6,8 +6,8 @@ create table users (
                        fname varchar(30),
                        pass varchar(25),
                        date_create timestamp,
-                       date_modified timestamp
-                           role enum ('admin' , 'user' )
+                       date_modified timestamp,
+                       role enum ('admin' , 'user' )
 );
 
 create table player(
@@ -51,7 +51,7 @@ create table matches(
 
 create table league(
                        id int primary key not null unique auto_increment,
-                       name varchar(30),
+                       name varchar(30)
 
 );
 

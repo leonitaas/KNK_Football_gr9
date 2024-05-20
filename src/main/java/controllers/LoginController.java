@@ -13,11 +13,9 @@ import service.UserService;
 import java.util.Locale;
 public class LoginController {
     @FXML
-    private PasswordField pwdPassword;
-
-    @FXML
     private TextField txtEmail;
-
+    @FXML
+    private PasswordField pwdPassword;
     @FXML
     private void handleLoginClick(ActionEvent ae){
         LoginUserDto loginUserData = new LoginUserDto(
@@ -25,23 +23,11 @@ public class LoginController {
                 this.pwdPassword.getText()
         );
 
-        boolean isLogin = UserService.login(loginUserData);
-
-        String domeni[] =  this.txtEmail.getText().split("@");
-        System.out.println(domeni[1]);
-        if(domeni[1].equals("admin.com") && isLogin){
-            Navigator.navigate(ae,Navigator.View_Page);
-            System.out.println("Ju jeni admin");
-        } else if (domeni[1].equals("football.com") && isLogin) {
-            System.out.println("Ju jeni user");
-        } else if (!isLogin) {
-            System.out.println("Jepni kredencialet korrekte");
-        }
-
+//        boolean isLogin = UserService.login(loginUserData);
 //        User user = UserService.login(loginUserData);
 //        if(user != null){
 //            SessionManager.setUser(user);
-
+        Navigator.navigate(ae,Navigator.View_Page);
 
     }
 
