@@ -8,24 +8,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="register" stylesheets="@../css/logindesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
    <children>
-      <Label layoutX="78.0" layoutY="86.0" text="First Name" />
-      <Label layoutX="78.0" layoutY="127.0" text="Last Name" />
-      <Label layoutX="80.0" layoutY="167.0" text="Email" />
-      <Label layoutX="78.0" layoutY="209.0" prefHeight="18.0" prefWidth="56.0" text="Password" />
-      <Label layoutX="76.0" layoutY="248.0" prefHeight="18.0" prefWidth="96.0" text="Confirm Passwor" />
-      <TextField fx:id="txtFirstName" layoutX="221.0" layoutY="82.0" />
-      <TextField fx:id="txtLastName" layoutX="222.0" layoutY="123.0" />
-      <TextField fx:id="txtEmail" layoutX="221.0" layoutY="163.0" />
-      <PasswordField fx:id="pwdPassword" layoutX="222.0" layoutY="206.0" />
-      <PasswordField fx:id="pwdConfirmPassword" layoutX="223.0" layoutY="245.0" />
-      <Text layoutX="159.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User register" wrappingWidth="112.66094970703125">
+      <Label layoutX="80.0" layoutY="95.0" text="First Name">
          <font>
-            <Font size="20.0" />
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="78.0" layoutY="136.0" text="Last Name">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="92.0" layoutY="176.0" text="Email">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="81.0" layoutY="217.0" prefHeight="18.0" prefWidth="56.0" text="Password">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="54.0" layoutY="256.0" prefHeight="19.0" prefWidth="106.0" text="Confirm Password">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="txtFirstName" layoutX="167.0" layoutY="91.0" />
+      <TextField fx:id="txtLastName" layoutX="167.0" layoutY="132.0" />
+      <TextField fx:id="txtEmail" layoutX="167.0" layoutY="172.0" />
+      <PasswordField fx:id="pwdPassword" layoutX="167.0" layoutY="214.0" />
+      <PasswordField fx:id="pwdConfirmPassword" layoutX="167.0" layoutY="253.0" />
+      <Text layoutX="157.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User register" wrappingWidth="149.5999999999999">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Button layoutX="207.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleSignUp" style="-fx-background-color: black;" text="Create" textFill="WHITE" />
-      <Button layoutX="320.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleCancel" style="-fx-background-color: black;" text="Cancel" textFill="WHITE" />
+      <Button layoutX="167.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleSignUp" style="-fx-background-color: black;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="255.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleCancel" style="-fx-background-color: black;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

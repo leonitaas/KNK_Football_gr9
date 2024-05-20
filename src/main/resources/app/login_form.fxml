@@ -8,18 +8,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" styleClass="back" stylesheets="@../css/logindesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Label layoutX="146.0" layoutY="167.0" prefHeight="18.0" prefWidth="34.0" text="Email" />
-      <Label layoutX="145.0" layoutY="211.0" text="Password" />
-      <TextField fx:id="txtEmail" layoutX="248.0" layoutY="150.0" prefHeight="26.0" prefWidth="168.0" />
-      <PasswordField fx:id="pwdPassword" layoutX="248.0" layoutY="197.0" prefHeight="26.0" prefWidth="168.0" />
-      <Button layoutX="246.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: black;" text="Login" textFill="WHITE" />
-      <Button layoutX="352.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleCancelClick" style="-fx-background-color: black;" text="Cancel" textFill="WHITE" />
-      <Label layoutX="264.0" layoutY="307.0" onMouseClicked="#handleCreateAccountClick" text="Create new account" textFill="#1e1c71" underline="true" />
-      <Text layoutX="268.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Label layoutX="57.0" layoutY="149.0" prefHeight="18.0" prefWidth="34.0" text="Email">
          <font>
-            <Font size="26.0" />
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="198.0" text="Password">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="txtEmail" layoutX="115.0" layoutY="146.0" prefHeight="26.0" prefWidth="168.0" />
+      <PasswordField fx:id="pwdPassword" layoutX="116.0" layoutY="195.0" prefHeight="26.0" prefWidth="168.0" />
+      <Button layoutX="168.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: black;" text="Log in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="142.0" layoutY="321.0" onMouseClicked="#handleCreateAccountClick" text="Create new account" underline="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Text layoutX="148.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+         <font>
+            <Font name="System Bold" size="25.0" />
          </font>
       </Text>
    </children>
