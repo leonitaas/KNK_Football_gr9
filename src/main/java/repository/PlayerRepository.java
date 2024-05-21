@@ -19,7 +19,7 @@ import java.sql.*;
 public class PlayerRepository {
     public static void insert(Player player,Squad squad, Team team) throws SQLException {
         String sql = "INSERT INTO player (name,position,birthday,image) " +
-                "Values (?,?,?,?,?)";
+                "Values (?,?,?,?)";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1,player.getName());
@@ -62,7 +62,7 @@ public class PlayerRepository {
         }
     }
     public static int findIdByData(Player player) throws SQLException {
-        String sql = "Select * from player where name=? and position =? and birthday= ? and nationality=? and image = ?";
+        String sql = "Select * from player where name=? and position =? and birthday= ? and image = ?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1,player.getName());
@@ -109,7 +109,7 @@ public class PlayerRepository {
     ) throws SQLException {
         ObservableList<Player> players = FXCollections.observableArrayList();
         String sql = "Select p.id as id, p.name as playerName, p.birthday as birthday, " +
-                "l.id as leagueId, n.id as nationId, p.position , t.id as teamId From player p " +
+                "l.id as leagueId, p.position , t.id as teamId From player p " +
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +

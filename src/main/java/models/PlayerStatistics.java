@@ -5,7 +5,7 @@ public class PlayerStatistics {
     private Player player_id;
     private int goal;
     private int assist;
-    private int minutes_played;
+    private int minutes_played; ///
 
     public PlayerStatistics(int id, Player player_id, int goal, int assist, int minutes_played ) {
         this.id = id;
