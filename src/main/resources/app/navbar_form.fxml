@@ -23,7 +23,7 @@
                                 <Insets bottom="20.0" left="60.0" right="60.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="matchesButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Matches" textFill="WHITE">
+                        <Button fx:id="matchesButton" onAction="#changetoMatch" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Matches" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>

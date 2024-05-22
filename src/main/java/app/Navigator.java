@@ -16,6 +16,7 @@ public class Navigator {
   public static final String CREATE_ACCOUNT_PAGE = "/app/create_user_form.fxml";
   public static final String Player_Page="/app/player-form.fxml";
   public static final String League_page="/app/league.fxml";
+    public static final String Match_page="/app/match_form.fxml";
 
     public static void navigate(Event event, String form) {
         Node eventNode = (Node) event.getSource();

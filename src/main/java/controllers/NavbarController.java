@@ -57,6 +57,9 @@ public class NavbarController {
     void changetoleague(ActionEvent event){
         Navigator.navigate(event, Navigator.League_page);
     }
-
+    @FXML
+    void changetoMatch(ActionEvent event){
+        Navigator.navigate(event, Navigator.Match_page);
+    }
 }
 
