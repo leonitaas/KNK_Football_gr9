@@ -13,10 +13,10 @@ public class BrowseImage {
         //   fileChooser.setInitialDirectory(new File(imagePath));
         fileSource = fileChooser.showOpenDialog(new Stage());
         if(fileSource != null) {
-            Image image = new Image(fileSource.getAbsolutePath());
+            String fileUrl = fileSource.toURI().toString();
+            Image image = new Image(fileUrl);
             imageView.setImage(image);
         }
         return fileSource;
     }
-
 }

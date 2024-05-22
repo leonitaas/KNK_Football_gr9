@@ -12,8 +12,10 @@ import java.io.IOException;
 public class Navigator {
     public static final String LOGIN_PAGE = "/app/login_form.fxml";
 
-   public static final String HOME_PAGE = "/app/home_form.fxml";
+    public static final String HOME_PAGE = "/app/home_form.fxml";
   public static final String CREATE_ACCOUNT_PAGE = "/app/create_user_form.fxml";
+  public static final String Player_Page="/app/player-form.fxml";
+  public static final String League_page="/app/league.fxml";
 
     public static void navigate(Event event, String form) {
         Node eventNode = (Node) event.getSource();

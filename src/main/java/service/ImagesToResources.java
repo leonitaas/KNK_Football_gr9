@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 public class ImagesToResources {
 
-    private static String imagePath = "C:\\Users\\PULSE Electronics\\Desktop\\KNK_football\\src\\main\\resources\\imagess\\s";
+    private static String imagePath = "C:\\Users\\Administrator\\IdeaProjects\\KNK_Football_gr9\\src\\main\\resources\\imagess\\s";
 
     public static String getImagePath() {
         return imagePath;
