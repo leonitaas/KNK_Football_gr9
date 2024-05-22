@@ -153,7 +153,7 @@ public class managePlayerController extends TranslatorController implements Init
             try {
                 PlayerRepository.fetchToTablePaginaton(pageIndex, rowsPerPage,tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerLeague,colPlayerPos,colPlayerTeam); // Get data for the current page
             } catch (Exception e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
             return tablePlayer;
         });
