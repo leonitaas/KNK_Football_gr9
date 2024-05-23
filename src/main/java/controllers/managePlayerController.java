@@ -103,76 +103,115 @@ public class managePlayerController extends TranslatorController implements Init
 
     @FXML
     void addPlayer(ActionEvent event) {
-        League league = chosePlayerLeague.getValue();
-        Team team = chosePlayerTeam.getValue();
-        String playerName,playerPosition, imageName;
-        playerName = txtPlayerName.getText();
-        playerPosition =txtPlayerPosition.getText();
-        Date birthday ;
-        birthday = Date.valueOf(datePlayerBirthday.getValue());
-        imageName = fileSource.getName();
-        Path imagePath = fileSource.toPath();
-        Player player = new Player(-1,playerName,playerPosition,birthday,imageName);
-        Squad squad = new Squad(0,team);
-        try {
-            PlayerRepository.insert(player,squad,team);
-            ImagesToResources.imageToResourcesTeam(league.getName(),playerName,imageName,imagePath);
-            CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
-                    "ManagePlayers",
-                    "Manage Player",
-                    "The Player has been added successfully ");
-            fetchData();
+        if (validateInputs()) {
+            League league = chosePlayerLeague.getValue();
+            Team team = chosePlayerTeam.getValue();
+            String playerName = txtPlayerName.getText();
+            String playerPosition = txtPlayerPosition.getText();
+            Date birthday = Date.valueOf(datePlayerBirthday.getValue());
+            String imageName = fileSource.getName();
+            Path imagePath = fileSource.toPath();
 
-        } catch (Exception e) {
-            CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
-                    "ManagePlayer",
-                    "Manage Player",
-                    "The Player failed to be added");
-            throw new RuntimeException(e);
+            try {
+                Player player = new Player(-1, playerName, playerPosition, birthday, imageName);
+                Squad squad = new Squad(0, team);
+                PlayerRepository.insert(player, squad, team);
+                ImagesToResources.imageToResourcesTeam(league.getName(), playerName, imageName, imagePath);
+                CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
+                        "ManagePlayers",
+                        "Manage Player",
+                        "The Player has been added successfully ");
+                fetchData();
+            } catch (SQLException e) {
+                CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                        "ManagePlayer",
+                        "Manage Player",
+                        "Failed to add the player. Please try again.");
+                e.printStackTrace();
+            } catch (Exception e) {
+                CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                        "ManagePlayer",
+                        "Manage Player",
+                        "An unexpected error occurred. Please contact support.");
+                e.printStackTrace();
+            }
         }
     }
+
+    private boolean validateInputs() {
+        if (chosePlayerLeague.getValue() == null || chosePlayerTeam.getValue() == null ||
+                txtPlayerName.getText().isEmpty() || txtPlayerPosition.getText().isEmpty() ||
+                datePlayerBirthday.getValue() == null || fileSource == null) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.WARNING,
+                    "Manage Player",
+                    "Manage Player",
+                    "Please fill in all fields.");
+            return false;
+        }
+        return true;
+    }
+
 
     @FXML
     void browseImagePlayer(ActionEvent event) {
         fileSource = BrowseImage.browseImage(imagePath,fileSource,imagePlayer);
 
     }
-    public void fetchData(){
+    public void fetchData() {
         try {
-            PlayerRepository.fetchToTable(tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerLeague,colPlayerPos,colPlayerTeam);
+            PlayerRepository.fetchToTable(tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                    "Error",
+                    "Error fetching data",
+                    "Failed to fetch player data from the database. Please try again later.");
         }
-
     }
 
+
     public void fetchDataToTable(){
-        pagination.setPageCount(100); // Set the total number of pages in the pagination control
+        pagination.setPageCount(100);
         int rowsPerPage = 10;
         pagination.setPageFactory(pageIndex -> {
             try {
-                PlayerRepository.fetchToTablePaginaton(pageIndex, rowsPerPage,tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerLeague,colPlayerPos,colPlayerTeam); // Get data for the current page
+                PlayerRepository.fetchToTablePaginaton(pageIndex, rowsPerPage,tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerLeague,colPlayerPos,colPlayerTeam);
             } catch (Exception e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
             return tablePlayer;
         });
     }
     @FXML
     void clearPlayer(ActionEvent event) {
+
         txtPlayerPosition.clear();
         txtPlayerName.clear();
         datePlayerBirthday.setValue(null);
-        chosePlayerTeam.setValue(null);
-        chosePlayerLeague.setValue(null);
-        imagePlayer.setImage(null);
-
+        if (chosePlayerTeam != null) {
+            chosePlayerTeam.setValue(null);
+        }
+        if (chosePlayerLeague != null) {
+            chosePlayerLeague.setValue(null);
+        }
+        if (imagePlayer != null) {
+            imagePlayer.setImage(null);
+        }
+        CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
+                "Clear Fields",
+                "Fields Cleared",
+                "All fields have been cleared.");
     }
+
 
     @FXML
     void deletePlayer(ActionEvent event) {
         PlayerRepository.Delete(tablePlayer);
         fetchData();
+        CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
+                "Delete Player",
+                "Player Deleted",
+                "The selected player has been deleted successfully.");
     }
 
     @FXML
@@ -192,22 +231,80 @@ public class managePlayerController extends TranslatorController implements Init
                 }
 
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                        "Error",
+                        "Error fetching filtered data",
+                        "Failed to fetch filtered player data. Please try again.");
+                e.printStackTrace();
             }
         }
     }
 
     @FXML
-    void clearTableFilter(){
+    void clearTableFilter() {
+
         choseTeamToTable.setValue(null);
         choseLeagueToTable.setValue(null);
-        fetchData();
+
+        try {
+            fetchData();
+            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
+                    "Clear Filters",
+                    "Filters Cleared",
+                    "Table filters have been cleared.");
+        } catch (Exception e) {
+
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                    "Error",
+                    "Error clearing table filters",
+                    "Failed to clear table filters. Please try again later.");
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void updatePlayer(ActionEvent event) {
+        Player selectedPlayer = tablePlayer.getSelectionModel().getSelectedItem();
 
+        if (selectedPlayer == null) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.WARNING,
+                    "Update Player",
+                    "Update Player",
+                    "Please select a player to update.");
+            return;
+        }
+
+        String newName = txtPlayerName.getText();
+        String newPosition = txtPlayerPosition.getText();
+        Date newBirthday = Date.valueOf(datePlayerBirthday.getValue());
+        Team newTeam = chosePlayerTeam.getValue();
+        League newLeague = chosePlayerLeague.getValue();
+
+        selectedPlayer.setName(newName);
+        selectedPlayer.setPosition(newPosition);
+        selectedPlayer.setBirthday(newBirthday);
+        selectedPlayer.setTeam(newTeam);
+        selectedPlayer.setLeague(newLeague);
+
+        try {
+            PlayerRepository.update(selectedPlayer);
+
+            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
+                    "Update Player",
+                    "Player Updated",
+                    "The selected player has been updated successfully.");
+
+            clearPlayer(event);
+        } catch (SQLException e) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                    "Error",
+                    "Error updating player",
+                    "Failed to update the selected player. Please try again later.");
+            e.printStackTrace();
+        }
     }
+
+
     static void setValuesToTeams(ComboBox<League> chosePlayerLeague,ComboBox<Team> chosePlayerTeam){
         chosePlayerLeague.setOnAction(actionEvent -> {
             if(chosePlayerLeague.getValue() !=null){
@@ -295,6 +392,7 @@ public class managePlayerController extends TranslatorController implements Init
 
         LeagueRepository.setValues(this.chosePlayerLeague);
         LeagueRepository.setValues(this.choseLeagueToTable);
+
         fetchDataToTable();
         getDataFromTable();
         changeLanguage();

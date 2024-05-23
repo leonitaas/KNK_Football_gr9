@@ -336,6 +336,33 @@ public class PlayerRepository {
             series2.getData().add(new XYChart.Data<>(result.getString("name"),result.getInt("goals")));
         }
     }
+    public static void update(Player player) throws SQLException {
+        String sql = "UPDATE player SET name=?, position=?, birthday=?, team_id=?, league_id=? WHERE id=?";
+        Connection connection = ConnectionUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, player.getName());
+        statement.setString(2, player.getPosition());
+        statement.setDate(3, player.getBirthday());
+        statement.setInt(4, player.getTeam().getId());
+        statement.setInt(5, player.getLeague().getId());
+        statement.setInt(6, player.getId());
+
+        int rowsAffected = statement.executeUpdate();
+
+        if (rowsAffected == 0) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
+                    "Error",
+                    "Player Update Error",
+                    "Failed to update player with ID: " + player.getId());
+            throw new SQLException("Failed to update player with ID: " + player.getId());
+        } else {
+            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
+                    "Success",
+                    "Player Updated",
+                    "Player with ID: " + player.getId() + " has been updated successfully.");
+        }
+    }
+
 
     public static void fetchToTablePaginaton(Integer pageIndex, int rowsPerPage, TableView<Player> tablePlayer, TableColumn<Player, Integer> colIdPlayer, TableColumn<Player, String> colNamePlayer, TableColumn<Player, Date> colPlayerBirthday, TableColumn<Player, League> colPlayerLeague, TableColumn<Player, String> colPlayerPos, TableColumn<Player, Team> colPlayerTeam) throws SQLException {
         ObservableList<Player> players = FXCollections.observableArrayList();
