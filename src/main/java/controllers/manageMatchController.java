@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,7 +26,7 @@ import service.LanguageUtil;
 
 
 
-public class manageMatchController {
+public class manageMatchController implements Initializable {
 
     @FXML
     private ComboBox<?> choseAwayTeam;
@@ -180,4 +181,15 @@ public class manageMatchController {
         });
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        List<String> leagueMatchOptions = Servise.getLeagueMatchOptions();
+        /*
+        Fillimisht permes servisit e thirrim repositoryn qe na kthen rezultatet per dropdownlisten
+        Servisi duhet me na kthy listen e formatume
+
+         */
+//        this.choseLeagueMatch.getItems().addAll(leagueMatchOptions);
+        //propozimi i Blendit
+    }
 }
