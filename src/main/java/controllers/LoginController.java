@@ -3,11 +3,14 @@ package controllers;
 import app.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import models.User;
 import models.dto.LoginUserDto;
+import javafx.scene.text.Text;
 import service.UserService;
 
 import java.util.Locale;
@@ -16,6 +19,20 @@ public class LoginController {
     private TextField txtEmail;
     @FXML
     private PasswordField pwdPassword;
+    @FXML
+    private Button btnlogin;
+
+    @FXML
+    private Label lblCreateAcc;
+
+    @FXML
+    private Label lblEmail;
+
+    @FXML
+    private Label lblPassword;
+
+    @FXML
+    private Text txtWelcome;
     @FXML
     private void handleLoginClick(ActionEvent ae){
         LoginUserDto loginUserData = new LoginUserDto(

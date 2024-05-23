@@ -10,25 +10,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="back" stylesheets="@../css/logindesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Label layoutX="64.0" layoutY="149.0" prefHeight="22.0" prefWidth="54.0" text="Email" textFill="WHITE">
+      <Label fx:id="lblEmail" layoutX="64.0" layoutY="149.0" prefHeight="22.0" prefWidth="54.0" text="Email" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label layoutX="54.0" layoutY="197.0" prefHeight="22.0" prefWidth="74.0" text="Password" textFill="WHITE">
+      <Label fx:id="lblPassword" layoutX="54.0" layoutY="197.0" prefHeight="22.0" prefWidth="74.0" text="Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
       <TextField fx:id="txtEmail" layoutX="141.0" layoutY="147.0" prefHeight="26.0" prefWidth="168.0" />
       <PasswordField fx:id="pwdPassword" layoutX="141.0" layoutY="195.0" prefHeight="26.0" prefWidth="168.0" />
-      <Button layoutX="184.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="31.0" prefWidth="81.0" styleClass=".button" stylesheets="@../css/logindesign.css" text="Log in" textFill="WHITE">
+      <Button fx:id="btnlogin" layoutX="184.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="31.0" prefWidth="81.0" styleClass=".button" stylesheets="@../css/logindesign.css" text="Log in" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="168.0" layoutY="324.0" onMouseClicked="#handleCreateAccountClick" styleClass="link" stylesheets="@../css/logindesign.css" text="Create new account" textFill="WHITE" underline="true">
+      <Label fx:id="lblCreateAcc" layoutX="168.0" layoutY="324.0" onMouseClicked="#handleCreateAccountClick" styleClass="link" stylesheets="@../css/logindesign.css" text="Create new account" textFill="WHITE" underline="true">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Text fill="WHITE" layoutX="170.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Text fx:id="txtWelcome" fill="WHITE" layoutX="170.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
