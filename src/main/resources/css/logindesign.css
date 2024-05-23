@@ -1,7 +1,19 @@
 .back{
--fx-background-color: linear-gradient(to top right, red, yellow);
-
+-fx-background-color: linear-gradient(to top right, #164B60, #65B741 );
 }
 .register{
--fx-background-color: linear-gradient(to top right, red, yellow);
+-fx-background-color: linear-gradient(to top right, #164B60, #65B741);
+}
+.button{
+-fx-cursor: hand;
+-fx-background-color: black;
+}
+.button:hover{
+-fx-background-color: #164B60;
+}
+.link{
+-fx-cursor: hand;
+}
+.link:hover{
+-fx-background-color: #164B60;
 }

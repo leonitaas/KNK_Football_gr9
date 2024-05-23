@@ -5,18 +5,18 @@
 
 .nav-btn{
 -fx-cursor: hand;
--fx-background-color:#B22222;
+-fx-background-color: #006769;
 -fx-background-radius: 10;
 
 }
 .nav-btn:hover{
--fx-background-color: #CD5C5C;
+-fx-background-color: #9DDE8B ;
 }
 .home-btn{
--fx-background-color: #FFDB58;
+-fx-background-color: #006769 ;
 -fx-cursor: hand;
 -fx-background-radius: 10;
 }
 .home-btn:hover{
--fx-background-color: #FBEC5D;
+-fx-background-color: #65B741;
 }
