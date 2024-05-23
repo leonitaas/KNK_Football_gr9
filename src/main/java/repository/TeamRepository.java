@@ -62,7 +62,7 @@ public class TeamRepository {
 
     public static void fetchToTable(TableView<Team> table,
                                     TableColumn<Team, Integer> colId, TableColumn<Team,String > colName,
-                                    TableColumn<Team,String> colStadium, TableColumn<Team, String> colYear,
+                                    TableColumn<Team,String> colStadium,
                                     TableColumn<Team, League> colLeague
     ) throws SQLException {
         ObservableList<Team> teams = FXCollections.observableArrayList();
