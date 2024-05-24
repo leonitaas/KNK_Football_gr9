@@ -106,7 +106,7 @@ public class manageTeamsController extends  TranslatorController implements Init
         Team team = new Team(-1,teamName,teamStadium,imageName);
         try {
             TeamRepository.insert(team, league); // This matches the updated method signature
-            ImagesToResources.imageToResourcesTeam(league.getName(), teamName, imageName, imagePath);
+            ImagesToResources.imageToResources(league.getName(), teamName, imageName, imagePath);
             CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
                     "ManageTeams",
                     "Manage Teams",

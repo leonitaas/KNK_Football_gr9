@@ -116,7 +116,7 @@ public class managePlayerController extends TranslatorController implements Init
                 Player player = new Player(-1, playerName, playerPosition, birthday, imageName);
                 Squad squad = new Squad(0, team);
                 PlayerRepository.insert(player, squad, team);
-                ImagesToResources.imageToResourcesTeam(league.getName(), playerName, imageName, imagePath);
+                ImagesToResources.imageToResources(league.getName(), playerName, imageName, imagePath);
                 CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
                         "ManagePlayers",
                         "Manage Player",

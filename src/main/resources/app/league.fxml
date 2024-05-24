@@ -7,46 +7,64 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LeagueManagementController">
+<AnchorPane prefHeight="603.0" prefWidth="700.0" style="-fx-background-color: #164B60;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LeagueManagementController">
     <children>
-      <BorderPane layoutX="-1.0" prefHeight="600.0" prefWidth="994.0">
-         <left>
-            <AnchorPane prefHeight="600.0" prefWidth="224.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox fx:id="navbar" layoutX="1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white;">
-                   <children>
-                       <fx:include source="navbar_form.fxml" />
-                   </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </left>
-      </BorderPane>
-        <Label layoutX="262.0" layoutY="38.0" text="League ID" />
-        <TextField fx:id="txtLeagueId" layoutX="360.0" layoutY="36.0" prefWidth="200.0" />
 
-        <Label layoutX="260.0" layoutY="84.0" text="League Name" />
-        <TextField fx:id="txtLeagueName" layoutX="361.0" layoutY="80.0" prefWidth="200.0" />
-
-        <Label layoutX="258.0" layoutY="130.0" text="League Photo" />
-        <ImageView fx:id="leaguePhoto" fitHeight="100.0" fitWidth="100.0" layoutX="345.0" layoutY="114.0" />
-
-        <Button fx:id="btnBrowseImage" layoutX="468.0" layoutY="130.0" onAction="#browseImage" text="Browse Image" />
-
-        <Button fx:id="btnAddLeague" layoutX="266.0" layoutY="226.0" onAction="#addLeague" text="Add League" />
-        <Button fx:id="btnUpdateLeague" layoutX="266.0" layoutY="272.0" onAction="#updateLeague" text="Update League" />
-        <Button fx:id="btnDeleteLeague" layoutX="461.0" layoutY="225.0" onAction="#deleteLeague" text="Delete League" />
-        <Button fx:id="btnClearLeague" layoutX="507.0" layoutY="271.0" onAction="#clearLeagueFields" text="Clear" />
-
-        <TableView fx:id="tableLeagues" layoutX="583.0" layoutY="20.0" prefHeight="560.0" prefWidth="430.0">
+        <TableView fx:id="tableLeagues" layoutX="494.0" prefHeight="603.0" prefWidth="261.0" styleClass="liga" stylesheets="@../css/design.css">
             <columns>
-                <TableColumn fx:id="colLeagueId" prefWidth="100.0" text="ID" />
-                <TableColumn fx:id="colLeagueName" prefWidth="200.0" text="Name" />
-                <TableColumn fx:id="colLeagueNumberOfTeams" prefWidth="130.0" text="Number of Teams" />
+                <TableColumn fx:id="colLeagueId" prefWidth="40.800048828125" style="-fx-background-color: #9DDE8B;" text="ID" />
+                <TableColumn fx:id="colLeagueName" prefWidth="97.60003662109375" style="-fx-background-color: #9DDE8B;" text="Name" />
+                <TableColumn fx:id="colLeagueNumberOfTeams" prefWidth="128.79998779296875" style="-fx-background-color: #9DDE8B;" text="Number of Teams" />
             </columns>
         </TableView>
+      <AnchorPane prefHeight="600.0" prefWidth="224.0">
+         <children>
+            <VBox fx:id="navbar" layoutX="1.0" layoutY="-1.0" prefHeight="603.0" prefWidth="250.0" style="-fx-background-color: white;">
+             <children>
+                 <fx:include source="navbar_form.fxml" />
+             </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+        <Label layoutX="271.0" layoutY="39.0" text="League ID" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+        <TextField fx:id="txtLeagueId" layoutX="360.0" layoutY="36.0" prefHeight="26.0" prefWidth="109.0" styleClass="liga" stylesheets="@../css/design.css" />
+
+        <Label layoutX="260.0" layoutY="83.0" text="League Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+        <TextField fx:id="txtLeagueName" layoutX="361.0" layoutY="80.0" prefHeight="26.0" prefWidth="110.0" styleClass="liga" stylesheets="@../css/design.css" />
+
+        <Label layoutX="260.0" layoutY="129.0" text="League Photo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+        <ImageView fx:id="leaguePhoto" fitHeight="100.0" fitWidth="100.0" layoutX="314.0" layoutY="184.0" />
+
+                    <Button fx:id="btnBrowseImage" layoutX="380.0" layoutY="126.0" onAction="#browseImage" styleClass="ligabutton" stylesheets="@../css/design.css" text="Browse Image">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+
+              <Button fx:id="btnAddLeague" layoutX="272.0" layoutY="347.0" onAction="#addLeague" styleClass="ligabutton" stylesheets="@../css/design.css" text="Add League">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+        <Button fx:id="btnUpdateLeague" layoutX="274.0" layoutY="402.0" onAction="#updateLeague" styleClass="ligabutton" stylesheets="@../css/design.css" text="Update League">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+        <Button fx:id="btnDeleteLeague" layoutX="276.0" layoutY="456.0" onAction="#deleteLeague" styleClass="ligabutton" stylesheets="@../css/design.css" text="Delete League">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
     </children>
 </AnchorPane>

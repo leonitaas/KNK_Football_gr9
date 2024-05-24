@@ -8,83 +8,110 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.manageTeamsController">
+<AnchorPane prefHeight="550.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.manageTeamsController">
     <children>
-        <BorderPane prefHeight="700.0" style="-fx-background-color: #CED4DA;" stylesheets="@../css/design.css">
-            <left>
-                <VBox prefHeight="549.0" prefWidth="254.0" style="-fx-background-radius: 0 50 0 0;" BorderPane.alignment="CENTER">
-                    <children>
-                        <fx:include source="navbar_form.fxml" />
-                    </children>
-                </VBox>
-            </left>
-            <center>
-                <BorderPane prefHeight="200.0" prefWidth="900.0" BorderPane.alignment="CENTER">
-                    <center>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                            <children>
-                                <AnchorPane layoutX="37.0" layoutY="67.0" prefHeight="567.0" prefWidth="802.0">
-                                    <children>
-                                        <VBox layoutX="53.0" layoutY="28.0" prefHeight="507.0" prefWidth="211.0" spacing="10.0">
-                                            <children>
-                                                <Label fx:id="name" prefHeight="18.0" prefWidth="72.0" text="Name" />
-                                                <TextField fx:id="txtTeamName" prefHeight="30.0" prefWidth="211.0" styleClass="chose" />
-                                                <Label fx:id="stadium" prefHeight="18.0" prefWidth="79.0" text="Stadium" />
-                                                <TextField fx:id="txtStadiumName" prefHeight="30.0" prefWidth="211.0" styleClass="chose" />
-                                                <Label fx:id="league" prefHeight="18.0" prefWidth="79.0" text="League" />
-                                                <ComboBox fx:id="choseLeague" prefHeight="27.0" prefWidth="211.0" styleClass="chose" />
-                                                <Label fx:id="photo" prefHeight="18.0" prefWidth="72.0" text="Photo" />
-                                                <VBox alignment="CENTER" prefHeight="148.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF;" styleClass="table">
-                                                    <children>
-                                                        <ImageView fx:id="teamImage" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                                                    </children>
-                                                </VBox>
-                                                <Button fx:id="btnBrowse" mnemonicParsing="false" onAction="#browseImage" text="Browse Photo" />
-                                            </children>
-                                        </VBox>
-                                        <VBox alignment="TOP_RIGHT" layoutX="303.0" layoutY="57.0" prefHeight="351.0" prefWidth="455.0" spacing="20.0">
-                                            <children>
-                                                <GridPane prefHeight="48.0" prefWidth="456.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="360.0" />
-                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="95.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints maxHeight="29.0" minHeight="20.0" prefHeight="17.0" />
-                                                        <RowConstraints maxHeight="29.0" minHeight="30.0" prefHeight="50.0" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label fx:id="selectLeague" text="Select League" />
-                                                        <Button mnemonicParsing="false" onAction="#fetchFilteredData" prefHeight="25.0" prefWidth="72.0" text="Search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <ComboBox fx:id="choseLeagueToTable" prefWidth="150.0" styleClass="chose" GridPane.rowIndex="1" />
-                                                    </children>
-                                                </GridPane>
-                                                <TableView fx:id="teamTable" prefHeight="281.0" prefWidth="378.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="colId" prefWidth="81.93798828125" text="Id" />
-                                                        <TableColumn fx:id="colName" prefWidth="107.14056396484375" text="Name" />
-                                                        <TableColumn fx:id="colStadium" prefWidth="138.228759765625" text="Stadium" />
-                                                        <TableColumn fx:id="colLeague" prefWidth="127.77117919921875" text="League" />
-                                                    </columns>
-                                                </TableView>
-                                            </children>
-                                        </VBox>
-                                        <Button fx:id="btnAddTeam" layoutX="303.0" layoutY="433.0" mnemonicParsing="false" onAction="#addTeam" prefHeight="39.0" prefWidth="118.0" text="Add Team" />
-                                        <Button fx:id="btnDeleteTeam" layoutX="611.0" layoutY="433.0" mnemonicParsing="false" onAction="#deleteTeam" prefHeight="39.0" prefWidth="118.0" text="Delete Team" />
-                                        <Button fx:id="btnUpdateTeam" layoutX="455.0" layoutY="433.0" mnemonicParsing="false" onAction="#updateTeam" prefHeight="39.0" prefWidth="118.0" text="Update Team" />
-                                        <Button fx:id="btnClearTeam" layoutX="303.0" layoutY="496.0" mnemonicParsing="false" onAction="#clearTeam" prefHeight="39.0" prefWidth="118.0" text="Clear" />
-                                    </children>
-                                </AnchorPane>
-                            </children>
-                        </AnchorPane>
-                    </center></BorderPane>
-            </center>
-        </BorderPane>
+              <AnchorPane layoutX="251.0" prefHeight="550.0" prefWidth="664.0" style="-fx-background-color: #164B60;">
+                  <children>
+                      <VBox layoutX="14.0" layoutY="27.0" prefHeight="507.0" prefWidth="125.0" spacing="10.0">
+                          <children>
+                              <Label fx:id="name" prefHeight="18.0" prefWidth="72.0" text="Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                              <TextField fx:id="txtTeamName" prefHeight="30.0" prefWidth="211.0" styleClass="teambutton" stylesheets="@../css/design.css" />
+                              <TextField fx:id="txtStadiumName" prefHeight="30.0" prefWidth="211.0" styleClass="teambutton" stylesheets="@../css/design.css" />
+                              <Label fx:id="stadium" prefHeight="18.0" prefWidth="79.0" text="Stadium" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                              <Label fx:id="league" prefHeight="18.0" prefWidth="79.0" text="League" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                              <ComboBox fx:id="choseLeague" prefHeight="27.0" prefWidth="211.0" styleClass="teambutton" stylesheets="@../css/design.css" />
+                              <Label fx:id="photo" prefHeight="18.0" prefWidth="72.0" text="Photo" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                              <VBox alignment="CENTER" prefHeight="148.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF;" styleClass="table">
+                                  <children>
+                                      <ImageView fx:id="teamImage" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                                  </children>
+                              </VBox>
+                              <Button fx:id="btnBrowse" mnemonicParsing="false" onAction="#browseImage" styleClass="teambutton" stylesheets="@../css/design.css" text="Browse Photo">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                          </children>
+                      </VBox>
+                      <VBox alignment="TOP_RIGHT" layoutX="180.0" layoutY="52.0" prefHeight="351.0" prefWidth="455.0" spacing="20.0">
+                          <children>
+                              <GridPane prefHeight="48.0" prefWidth="456.0">
+                                  <columnConstraints>
+                                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="360.0" />
+                                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="95.0" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints maxHeight="29.0" minHeight="20.0" prefHeight="17.0" />
+                                      <RowConstraints maxHeight="29.0" minHeight="30.0" prefHeight="50.0" />
+                                  </rowConstraints>
+                                  <children>
+                                      <Label fx:id="selectLeague" text="Select League" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                                      <Button mnemonicParsing="false" onAction="#fetchFilteredData" prefHeight="25.0" prefWidth="72.0" styleClass="teambutton" stylesheets="@../css/design.css" text="Search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                      <ComboBox fx:id="choseLeagueToTable" prefWidth="150.0" styleClass="teambutton" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
+                                  </children>
+                              </GridPane>
+                              <TableView fx:id="teamTable" prefHeight="281.0" prefWidth="378.0" style="-fx-background-color: #FDDE55;" styleClass="tabela" stylesheets="@../css/design.css">
+                                  <columns>
+                                      <TableColumn fx:id="colId" prefWidth="81.93798828125" style="-fx-background-color: #9DDE8B;" text="Id" />
+                                      <TableColumn fx:id="colName" prefWidth="107.14056396484375" style="-fx-background-color: #9DDE8B;" text="Name" />
+                                      <TableColumn fx:id="colStadium" prefWidth="138.228759765625" style="-fx-background-color: #9DDE8B;" text="Stadium" />
+                                      <TableColumn fx:id="colLeague" prefWidth="127.77117919921875" style="-fx-background-color: #9DDE8B;" text="League" />
+                                  </columns>
+                              </TableView>
+                          </children>
+                      </VBox>
+                      <Button fx:id="btnAddTeam" layoutX="196.0" layoutY="433.0" mnemonicParsing="false" onAction="#addTeam" prefHeight="39.0" prefWidth="118.0" styleClass="teambutton" stylesheets="@../css/design.css" text="Add Team">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+                      <Button fx:id="btnDeleteTeam" layoutX="483.0" layoutY="433.0" mnemonicParsing="false" onAction="#deleteTeam" prefHeight="39.0" prefWidth="118.0" styleClass="teambutton" stylesheets="@../css/design.css" text="Delete Team">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+                      <Button fx:id="btnUpdateTeam" layoutX="339.0" layoutY="433.0" mnemonicParsing="false" onAction="#updateTeam" prefHeight="39.0" prefWidth="118.0" styleClass="teambutton" stylesheets="@../css/design.css" text="Update Team">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+                      <Button fx:id="btnClearTeam" layoutX="339.0" layoutY="494.0" mnemonicParsing="false" onAction="#clearTeam" prefHeight="39.0" prefWidth="118.0" styleClass="teambutton" stylesheets="@../css/design.css" text="Clear">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+                  </children>
+              </AnchorPane>
+          <VBox prefHeight="500.0" prefWidth="254.0" style="-fx-background-radius: 0 50 0 0;">
+              <children>
+                  <fx:include source="navbar_form.fxml" />
+              </children>
+          </VBox>
     </children>
 </AnchorPane>

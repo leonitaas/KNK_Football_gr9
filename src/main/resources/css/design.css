@@ -18,6 +18,34 @@
 .matchbutton:hover{
 -fx-background-color: #65B741;
 }
+.tabelsmatch{
+-fx-background-color: #FDDE55;
+-fx-cursor: hand;
+}
 .tabelsmatch:hover{
 -fx-background-color: #9DDE8B;
+}
+.teambutton{
+-fx-background-color:  #9DDE8B;
+-fx-cursor: hand;
+}
+.teambutton:hover{
+-fx-background-color: #65B741 ;
+}
+.tabela{
+-fx-cursor: hand;
+}
+.liga{
+-fx-background-color: #9DDE8B;
+-fx-cursor: hand;
+}
+.liga:hover{
+-fx-background-color: #65B741 ;
+}
+.ligabutton{
+-fx-background-color: #FDDE55;
+-fx-cursor: hand;
+}
+.ligabutton:hover{
+-fx-background-color:#9DDE8B ;
 }

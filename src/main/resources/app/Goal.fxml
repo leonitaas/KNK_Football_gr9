@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="80.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GoalController">
+<VBox prefHeight="80.0" prefWidth="360.0" style="-fx-background-color: #164B60;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GoalController">
         <children>
             <GridPane prefHeight="34.0" prefWidth="360.0">
                 <columnConstraints>
@@ -27,16 +28,28 @@
                     <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <children>
-                    <TextField fx:id="minute" alignment="CENTER" prefHeight="44.0" prefWidth="76.0" promptText="Minute" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                    <RadioButton fx:id="ownGoal" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Own Goal" GridPane.rowIndex="1">
+                    <TextField fx:id="minute" alignment="CENTER" prefHeight="44.0" prefWidth="76.0" promptText="Minute" style="-fx-background-color: #FDDE55;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <RadioButton fx:id="ownGoal" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Own Goal" textFill="WHITE" GridPane.rowIndex="1">
                <toggleGroup>
                   <ToggleGroup fx:id="goalTypeGroup" />
-               </toggleGroup></RadioButton>
-                    <RadioButton fx:id="Penalty" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Penalty" toggleGroup="$goalTypeGroup" GridPane.rowIndex="3" />
-                    <Label prefHeight="17.0" prefWidth="158.0" text="Assisted" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    <Label prefHeight="17.0" prefWidth="158.0" text="Scored" GridPane.columnIndex="1" />
-            <ComboBox fx:id="choseScorer" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="choseAssister" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </toggleGroup>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></RadioButton>
+                    <RadioButton fx:id="Penalty" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="Penalty" textFill="WHITE" toggleGroup="$goalTypeGroup" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></RadioButton>
+                    <Label prefHeight="17.0" prefWidth="158.0" text="Assisted" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+                    <Label prefHeight="17.0" prefWidth="158.0" text="Scored" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <ComboBox fx:id="choseScorer" prefWidth="150.0" style="-fx-background-color: #9DDE8B;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="choseAssister" prefWidth="150.0" style="-fx-background-color: #9DDE8B;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 </children>
             </GridPane>
       <VBox prefHeight="200.0" prefWidth="100.0">
