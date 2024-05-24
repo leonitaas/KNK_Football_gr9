@@ -79,7 +79,7 @@ public class LeagueRepository {
     }
 
 
-    public static void Update(TableView<League> table, League league, Path fileSource) {
+    public static void Update(TableView<League> table, League league, Path fileSource, String imageName) {
         int index = table.getSelectionModel().getSelectedIndex();
         int id = table.getItems().get(index).getId();
         String name = table.getItems().get(index).getName();
@@ -97,7 +97,7 @@ public class LeagueRepository {
                 statement.executeUpdate();
                 CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION, "Manage League", "Manage League", "The League Updated Successfully");
                 try {
-                    ImagesToResources.imageToResources(league.getName(), league.getLeague_logo(), fileSource);
+                    ImagesToResources.imageToResources(league.getName(), league.getLeague_logo(), imageName, fileSource);
                     File oldImageFile = new File(ImagesToResources.getImagePath() + "\\" + name + "\\" + image);
                     oldImageFile.delete();
                 } catch (IOException e) {

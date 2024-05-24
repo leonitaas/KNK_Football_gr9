@@ -15,7 +15,6 @@ import service.BrowseImage;
 import service.ImagesToResources;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -40,6 +39,7 @@ public class LeagueManagementController implements Initializable {
 
     private File fileSource;
     private static final Logger logger = Logger.getLogger(LeagueManagementController.class.getName());
+    private String imageName;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,7 +76,7 @@ public class LeagueManagementController implements Initializable {
 
         try {
             LeagueRepository.insert(league);
-            ImagesToResources.imageToResources("leagues", league.getName(), fileSource.toPath());
+            ImagesToResources.imageToResources("leagues", league.getName(), imageName, fileSource.toPath());
             fetchLeagues();
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error adding league", e);
@@ -89,7 +89,7 @@ public class LeagueManagementController implements Initializable {
         if (selectedLeague != null) {
             selectedLeague.setName(txtLeagueName.getText());
             try {
-                LeagueRepository.Update(tableLeagues, selectedLeague, fileSource.toPath());
+                LeagueRepository.Update(tableLeagues, selectedLeague, fileSource.toPath(), imageName);
                 fetchLeagues();
             } catch (Exception e) {
                 logger.log(Level.SEVERE, "Error updating league", e);
