@@ -2,3 +2,22 @@
     -fx-background-color:#4c525f;
     -fx-text-color:#f3f0e9;
 }
+
+.ribbon{
+-fx-background-color: #65B741 ;
+}
+
+
+.wall{
+-fx-background-color:#164B60;
+}
+.matchbutton{
+-fx-background-color:  #9DDE8B;
+-fx-cursor: hand;
+}
+.matchbutton:hover{
+-fx-background-color: #65B741;
+}
+.tabelsmatch:hover{
+-fx-background-color: #9DDE8B;
+}
