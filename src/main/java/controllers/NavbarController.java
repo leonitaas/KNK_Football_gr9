@@ -61,5 +61,9 @@ public class NavbarController {
     void changetoMatch(ActionEvent event){
         Navigator.navigate(event, Navigator.Match_page);
     }
+    @FXML
+    void changeToTeam(ActionEvent event){
+        Navigator.navigate(event,Navigator.Team_page);
+    }
 }
 
