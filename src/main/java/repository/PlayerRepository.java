@@ -113,7 +113,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -137,7 +137,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id " +
                 "Where l.id = ?";
         Connection connection = ConnectionUtil.getConnection();
@@ -162,7 +162,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id " +
                 "Where t.id = ?";
         Connection connection = ConnectionUtil.getConnection();
@@ -244,7 +244,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.squad_id = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id " +
                 "Inner join player_statistics ps on ps.player_id = p.id " +
                 "Where l.id = ? " +
@@ -296,7 +296,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id " +
                 "Inner join player_statistics ps on ps.player_id = p.id " +
                 "Where l.id = ? " +
@@ -372,7 +372,7 @@ public class PlayerRepository {
                 "Inner join playersquad sp on sp.pid = p.id " +
                 "Inner join squad s on sp.sid = s.id " +
                 "Inner join team t on t.id = s.team_id " +
-                "Inner join league_teams lt on lt.team_id = t.id " +
+                "Inner join league_team lt on lt.team_id = t.id " +
                 "Inner join league l on l.id = lt.league_id " +
                 "Limit ? Offset ?";
         Connection connection = ConnectionUtil.getConnection();
