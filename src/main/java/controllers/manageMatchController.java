@@ -38,7 +38,7 @@ public class manageMatchController implements Initializable {
     private ComboBox<?> choseHomeTeam;
 
     @FXML
-    private ComboBox<?> choseLeagueMatch;
+    private ComboBox<League> choseLeagueMatch;
 
     @FXML
     private TextField fieldAwayTeamGoal;
@@ -181,15 +181,23 @@ public class manageMatchController implements Initializable {
         });
     }
 
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+////        List<String> leagueMatchOptions = Servise.getLeagueMatchOptions();
+//        /*
+//        Fillimisht permes servisit e thirrim repositoryn qe na kthen rezultatet per dropdownlisten
+//        Servisi duhet me na kthy listen e formatume
+//
+//         */
+////        this.choseLeagueMatch.getItems().addAll(leagueMatchOptions);
+//        //propozimi i Blendit
+//    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        List<String> leagueMatchOptions = Servise.getLeagueMatchOptions();
-        /*
-        Fillimisht permes servisit e thirrim repositoryn qe na kthen rezultatet per dropdownlisten
-        Servisi duhet me na kthy listen e formatume
+        LeagueRepository.setValues(this.choseLeagueMatch);
 
-         */
-//        this.choseLeagueMatch.getItems().addAll(leagueMatchOptions);
-        //propozimi i Blendit
+
     }
+
 }
