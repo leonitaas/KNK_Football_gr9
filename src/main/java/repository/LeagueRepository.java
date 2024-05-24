@@ -38,25 +38,46 @@ public class LeagueRepository {
         int index = table.getSelectionModel().getSelectedIndex();
         int id = table.getItems().get(index).getId();
 
+        Connection connection = null;
+        PreparedStatement statement = null;
         try {
-            League league = findById(id);
-            String sql = "DELETE FROM league WHERE id = ?";
-            Connection connection = ConnectionUtil.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
+            connection = ConnectionUtil.getConnection();
+            connection.setAutoCommit(false);
+
+            String sqlDeleteLeagueTeam = "DELETE FROM league_team WHERE league_id = ?";
+            statement = connection.prepareStatement(sqlDeleteLeagueTeam);
             statement.setInt(1, id);
             statement.executeUpdate();
-            String path = ImagesToResources.getImagePath() + "\\" + league.getName() + "\\" + league.getLeague_logo();
+
+            String sqlDeleteLeague = "DELETE FROM league WHERE id = ?";
+            statement = connection.prepareStatement(sqlDeleteLeague);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+            connection.commit();
+
+            String path = ImagesToResources.getImagePath() + "\\" + table.getItems().get(index).getName() + "\\" + table.getItems().get(index).getLeague_logo();
             File file = new File(path);
             if (file.delete()) {
                 System.out.println("File deleted successfully");
             }
             CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION, "Manage Leagues", "Manage Leagues", "The league has been deleted!");
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
             CostumedAlerts.costumeAlert(Alert.AlertType.ERROR, "Manage Leagues", "Manage Leagues", "The league failed to be deleted!");
-
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        } finally {
+            if (statement != null) try { statement.close(); } catch (SQLException ignore) {}
+            if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
         }
     }
+
 
     public static void Update(TableView<League> table, League league, Path fileSource) {
         int index = table.getSelectionModel().getSelectedIndex();
