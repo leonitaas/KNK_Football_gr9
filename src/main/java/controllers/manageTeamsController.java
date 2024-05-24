@@ -23,6 +23,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class manageTeamsController extends  TranslatorController implements Initializable {
+
+
     @FXML
     private Label league;
 
@@ -45,6 +47,17 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     @FXML
     private Button btnBrowse;
+
+    @FXML
+    public Button btnDeleteTeam;
+
+    @FXML
+    public Button btnUpdateTeam;
+
+    @FXML
+
+    public Button btnClearTeam;
+
 
     @FXML
     private ComboBox<League> choseLeague;

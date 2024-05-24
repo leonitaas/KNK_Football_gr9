@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 public class TeamRepository {
     public static void insert(Team team, League league) throws SQLException {
-        String sql = "INSERT INTO team (name,stadium,logo) " +
+        String sql = "INSERT INTO team (name,stadium,team_logo) " +
                 "Values (?,?,?)";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class TeamRepository {
             String path = ImagesToResources.getImagePath()+"\\"+league+"\\"+team.getName() +"\\"+team.getLogo();
             File file = new File(path);
             if(file.delete())
-            {System.out.println("File deleted successfuly");
+            {System.out.println("File deleted successfully");
             }
             CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,"Manage Teams","Manage Teams","The team has been deleted!");
         } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class TeamRepository {
     ) throws SQLException {
         ObservableList<Team> teams = FXCollections.observableArrayList();
         String sql = "Select t.id, t.name ,t.stadium, l.id as leagueId from Team t\n" +
-                "inner join league_teams lt on lt.team_id = t.id\n" +
+                "inner join league_team lt on lt.team_id = t.id\n" +
                 "inner join league l on l.id = lt.league_id;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class TeamRepository {
 
         ObservableList<Team> teams = FXCollections.observableArrayList();
         String sql = "Select t.id, t.name ,t.stadium , l.id as leagueId from Team t\n" +
-                "inner join league_teams lt on lt.team_id = t.id\n" +
+                "inner join league_team lt on lt.team_id = t.id\n" +
                 "inner join league l on l.id = lt.league_id Where l.id = ?;";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -128,18 +128,17 @@ public class TeamRepository {
             Team team = new Team(result.getInt("id"),
                     result.getString("name"),
                     result.getString("stadium"),
-                    result.getString("logo"));
+                    result.getString("team_logo"));
             return team;
         }
         return null;
     }
     public static int findId(Team team) throws SQLException {
-        String sql = "Select id from team where name=? and stadium =?  and logo=?";
+        String sql = "Select id from team where name=? and stadium =?  and team_logo=?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1,team.getName());
         statement.setString(2,team.getStadium());
-        //statement.setString(3,team.getYear());
         statement.setString(3,team.getLogo());
         ResultSet result = statement.executeQuery();
         if(result.next()){
@@ -153,8 +152,8 @@ public class TeamRepository {
 
     public static ObservableList<Team> getAllTeamsFromLeague(League league) throws SQLException {
         ObservableList teams = FXCollections.observableArrayList();
-        String sql = "Select t.id , t.name, t.stadium, t.logo  from team t " +
-                "inner join league_teams lt on lt.team_id = t.id " +
+        String sql = "Select t.id , t.name, t.stadium, t.team_logo  from team t " +
+                "inner join league_team lt on lt.team_id = t.id " +
                 "inner join league l on l.id = lt.league_id " +
                 "where l.id = ?";
         Connection connection = ConnectionUtil.getConnection();
@@ -167,7 +166,7 @@ public class TeamRepository {
                     result.getInt("id"),
                     result.getString("name"),
                     result.getString("stadium"),
-                    result.getString("logo"));
+                    result.getString("team_logo"));
 
             teams.add(team);
         }
@@ -175,8 +174,8 @@ public class TeamRepository {
     }
     public static ObservableList<Team> getAllTeamsFromLeagueExcept(League league,Team team) throws SQLException {
         ObservableList teams = FXCollections.observableArrayList();
-        String sql = "Select t.id , t.name, t.stadium, t.logo  from team t " +
-                "inner join league_teams lt on lt.team_id = t.id " +
+        String sql = "Select t.id , t.name, t.stadium, t.team_logo  from team t " +
+                "inner join league_team lt on lt.team_id = t.id " +
                 "inner join league l on l.id = lt.league_id " +
                 "where l.id = ? and t.id != ?";
         Connection connection = ConnectionUtil.getConnection();
@@ -190,7 +189,7 @@ public class TeamRepository {
                     result.getInt("id"),
                     result.getString("name"),
                     result.getString("stadium"),
-                    result.getString("logo"));
+                    result.getString("team_logo"));
 
             teams.add(theTeam);
         }
