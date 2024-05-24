@@ -105,20 +105,20 @@ public class manageTeamsController extends  TranslatorController implements Init
         Path imagePath = fileSource.toPath();
         Team team = new Team(-1,teamName,teamStadium,imageName);
         try {
-            TeamRepository.insert(team,league);
-            ImagesToResources.imageToResourcesTeam(league.getName(),teamName,imageName,imagePath);
+            TeamRepository.insert(team, league); // This matches the updated method signature
+            ImagesToResources.imageToResourcesTeam(league.getName(), teamName, imageName, imagePath);
             CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
                     "ManageTeams",
                     "Manage Teams",
                     "The Team has been added successfully ");
             fetchData();
-
         } catch (Exception e) {
-            CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
                     "ManageTeams",
                     "Manage Teams",
                     "The Team failed to be added");
             throw new RuntimeException(e);
+
         }
     }
 
@@ -163,7 +163,10 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     @FXML
     void browseImage(ActionEvent event) {
-        fileSource = BrowseImage.browseImage(imagePath,fileSource,teamImage);
+        fileSource = BrowseImage.browseImage(ImagesToResources.getImagePath(), fileSource, teamImage);
+        if (fileSource != null) {
+            teamImage.setImage(new Image(fileSource.toURI().toString()));
+        }
     }
 
     @FXML
@@ -178,6 +181,7 @@ public class manageTeamsController extends  TranslatorController implements Init
     void deleteTeam(ActionEvent event) {
         TeamRepository.Delete(teamTable);
         fetchData();
+
     }
 
     @FXML

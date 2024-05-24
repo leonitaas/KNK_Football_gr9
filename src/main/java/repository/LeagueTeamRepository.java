@@ -38,18 +38,6 @@ public class LeagueTeamRepository {
         return null;
     }
 
-    public static LeagueTeam findByLeague(Team team) throws SQLException {
-        String sql = "Select * from league_team where team_id = ?";
-        Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,team.getId());
-        ResultSet result = statement.executeQuery();
-        while (result.next()){
-            LeagueTeam leagueTeams = new LeagueTeam(LeagueRepository.findById(result.getInt("league_id")),
-                    TeamRepository.findById(result.getInt("team_id")));
-            return leagueTeams;
-        }
-        return null;
-    }
+
 }
 

@@ -10,31 +10,47 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class TeamRepository {
     public static void insert(Team team, League league) throws SQLException {
-        String sql = "INSERT INTO team (name,stadium,team_logo) " +
-                "Values (?,?,?)";
         Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1,team.getName());
-        statement.setString(2,team.getStadium());
-       // statement.setString(3,team.getYear());
-        statement.setString(3,team.getLogo());
-        statement.executeUpdate();
+        try {
+            connection.setAutoCommit(false);
 
-        team.setId(TeamRepository.findId(team));
-        LeagueTeam league_team = new LeagueTeam(league,team);
-        LeagueTeamRepository.insert(league_team);
-        Squad squad = new Squad(1,team);
-        SquadRepository.insertByTeam(squad);
-        Standings standing = new Standings(1,team,league,0,0,0,0,0,0);
-        StandingsRepository.insertByTeam(standing);
+            String sqlTeam = "INSERT INTO team (name, stadium, team_logo) VALUES (?, ?, ?)";
+            PreparedStatement statementTeam = connection.prepareStatement(sqlTeam, Statement.RETURN_GENERATED_KEYS);
+            statementTeam.setString(1, team.getName());
+            statementTeam.setString(2, team.getStadium());
+            statementTeam.setString(3, team.getLogo());
+            statementTeam.executeUpdate();
+
+            ResultSet rsTeam = statementTeam.getGeneratedKeys();
+            if (rsTeam.next()) {
+                team.setId(rsTeam.getInt(1));
+            }
+
+            if (league != null) {
+                String sqlLeagueTeam = "INSERT INTO league_team (league_id, team_id) VALUES (?, ?)";
+                PreparedStatement statementLeagueTeam = connection.prepareStatement(sqlLeagueTeam);
+                statementLeagueTeam.setInt(1, league.getId());
+                statementLeagueTeam.setInt(2, team.getId());
+                statementLeagueTeam.executeUpdate();
+            }
+
+            connection.commit();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        } finally {
+            if (connection != null) {
+                connection.setAutoCommit(true);
+                connection.close();
+            }
+        }
     }
+
+
     public static void Delete(TableView<Team> teamTable) {
         int index = teamTable.getSelectionModel().getSelectedIndex();
         int id = teamTable.getItems().get(index).getId();
@@ -119,7 +135,7 @@ public class TeamRepository {
     }
 
     public static Team findById(int teamId) throws SQLException {
-        String sql = "Select * from team where id = ?";
+        String sql = "Select * from team where id = team_id";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,teamId);

@@ -20,12 +20,18 @@ import java.sql.SQLException;
 public class LeagueRepository {
 
     public static void insert(League league) throws SQLException {
-        String sql = "INSERT INTO league (name, league_logo) VALUES (?, ?)";
         Connection connection = ConnectionUtil.getConnection();
+        String sql = "INSERT INTO league (id, name, league_logo) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, league.getName());
-        statement.setString(2, league.getLeague_logo());
-        statement.executeUpdate();
+        statement.setInt(1, league.getId());
+        statement.setString(2, league.getName());
+        statement.setString(3, league.getLeague_logo());
+        int result = statement.executeUpdate();
+        if (result > 0) {
+            System.out.println("League inserted successfully with ID: " + league.getId());
+        } else {
+            System.out.println("Failed to insert the league.");
+        }
     }
 
     public static void Delete(TableView<League> table) {
