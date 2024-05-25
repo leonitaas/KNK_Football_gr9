@@ -13,9 +13,9 @@
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
             <children>
-                <VBox layoutX="31.0" layoutY="175.0" prefHeight="334.0" prefWidth="186.0" styleClass="vbox" stylesheets="@../css/navbar.css">
+                <VBox layoutX="31.0" layoutY="175.0" prefHeight="334.0" prefWidth="186.0" styleClass="navbarVbox" stylesheets="@../css/design.css">
                     <children>
-                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#BackAtHome" prefHeight="40.0" prefWidth="100.0" styleClass="home-btn" stylesheets="@../css/navbar.css" text="Home" textFill="WHITE">
+                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#BackAtHome" prefHeight="40.0" prefWidth="100.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Home" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -23,7 +23,7 @@
                                 <Insets bottom="20.0" left="60.0" right="60.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="matchesButton" mnemonicParsing="false" onAction="#changetoMatch" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Matches" textFill="WHITE">
+                        <Button fx:id="matchesButton" mnemonicParsing="false" onAction="#changetoMatch" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Matches" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -31,7 +31,7 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="teamsButton" mnemonicParsing="false" onAction="#changeToTeam" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Teams" textFill="WHITE">
+                        <Button fx:id="teamsButton" mnemonicParsing="false" onAction="#changeToTeam" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Teams" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -39,7 +39,7 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="playersButton" mnemonicParsing="false" onAction="#managePlayerController" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Players" textFill="WHITE">
+                        <Button fx:id="playersButton" mnemonicParsing="false" onAction="#managePlayerController" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Players" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -47,7 +47,7 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="leaguesButton" mnemonicParsing="false" onAction="#changetoleague" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Leagues" textFill="WHITE">
+                        <Button fx:id="leaguesButton" mnemonicParsing="false" onAction="#changetoleague" prefHeight="40.0" prefWidth="300.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Leagues" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -55,7 +55,7 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#changeToLogin" prefHeight="40.0" prefWidth="100.0" styleClass="nav-btn" stylesheets="@../css/navbar.css" text="Log out" textFill="WHITE">
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#changeToLogin" prefHeight="40.0" prefWidth="100.0" styleClass="nav-btn" stylesheets="@../css/design.css" text="Log out" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -65,7 +65,6 @@
                         </Button>
                     </children>
                 </VBox>
-                <AnchorPane layoutX="-86.0" layoutY="-176.0" prefHeight="37.0" prefWidth="186.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagess/s/logo-football/logoja.png" />

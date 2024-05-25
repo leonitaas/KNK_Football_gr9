@@ -18,153 +18,169 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="880.0" stylesheets="@../css/player.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.managePlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="915.0" stylesheets="@../css/design.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.managePlayerController">
    <children>
-      <BorderPane layoutX="-1.0" layoutY="35.0" prefHeight="576.0" prefWidth="880.0">
-         <left>
-            <VBox prefHeight="575.0" prefWidth="250.0" BorderPane.alignment="CENTER">
-                <children>
-                    <fx:include source="navbar_form.fxml" />
-                </children>
-            </VBox>
-         </left>
-         <center>
-            <BorderPane prefHeight="611.0" prefWidth="653.0" BorderPane.alignment="CENTER">
-               <center>
-                  <AnchorPane prefHeight="611.0" prefWidth="630.0" style="-fx-background-color: #164B60;" BorderPane.alignment="CENTER">
+      <BorderPane layoutX="-1.0" layoutY="3.0" prefHeight="550.0" prefWidth="915.0" />
+      <AnchorPane layoutY="-1.0" prefHeight="550.0" prefWidth="915.0" style="-fx-background-color: #164B60;">
+         <children>
+            <AnchorPane layoutX="266.0" layoutY="9.0" prefHeight="531.0" prefWidth="634.0">
+               <children>
+                  <VBox layoutX="12.0" layoutY="-3.0" prefHeight="439.0" prefWidth="206.0">
                      <children>
-                        <AnchorPane layoutX="4.0" layoutY="50.0" prefHeight="477.0" prefWidth="602.0">
+                        <GridPane prefHeight="285.0" prefWidth="205.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="120.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <VBox layoutX="12.0" layoutY="20.0" prefHeight="399.0" prefWidth="205.0">
-                                 <children>
-                                    <GridPane prefHeight="285.0" prefWidth="205.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="120.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <TextField fx:id="txtPlayerName" promptText="Enter player's name..." style="-fx-background-radius: 11;" styleClass="inputs" GridPane.rowIndex="1" />
-                                          <Label fx:id="name" text="Name" />
-                                          <DatePicker fx:id="datePlayerBirthday" prefHeight="41.0" prefWidth="203.0" promptText="Enter the birthday" style="-fx-background-radius: 11;" styleClass="inputs" GridPane.rowIndex="5" />
-                                          <Label fx:id="birthday" text="Birthday" GridPane.rowIndex="4" />
-                                          <Label fx:id="league" text="League" GridPane.rowIndex="6" />
-                                          <ComboBox fx:id="chosePlayerLeague" prefHeight="36.0" prefWidth="205.0" style="-fx-background-radius: 11;" GridPane.rowIndex="7" />
-                                          <ComboBox fx:id="chosePlayerTeam" prefHeight="51.0" prefWidth="205.0" style="-fx-background-radius: 11;" GridPane.rowIndex="9" />
-                                          <Label fx:id="team" text="Team" GridPane.rowIndex="8" />
-                                          <Label fx:id="position" text="Position" GridPane.rowIndex="2" />
-                                          <TextField fx:id="txtPlayerPosition" promptText="Enter position" style="-fx-background-radius: 11;" styleClass="inputs" GridPane.rowIndex="3" />
-                                       </children>
-                                    </GridPane>
-                                    <VBox alignment="BOTTOM_CENTER" prefHeight="143.0" prefWidth="205.0">
-                                       <children>
-                                          <Label fx:id="photo" prefHeight="32.0" prefWidth="205.0" text="Photo">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Label>
-                                          <ImageView fx:id="imagePlayer" fitHeight="50.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
-                                             <VBox.margin>
-                                                <Insets left="15.0" top="60.0" />
-                                             </VBox.margin>
-                                          </ImageView>
-                                       </children>
-                                    </VBox>
-                                    <Button fx:id="btnBrowseImage" mnemonicParsing="false" onAction="#browseImagePlayer" prefHeight="39.0" prefWidth="133.0" styleClass="btn" text="Browse Image">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="238.0" layoutY="24.0" prefHeight="358.0" prefWidth="355.0">
-                                 <children>
-                                    <GridPane prefHeight="69.0" prefWidth="355.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="30.333343505859375" minHeight="10.0" prefHeight="25.666671752929688" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="48.33332824707031" minHeight="10.0" prefHeight="44.33332824707031" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Label fx:id="selectLeague" text="Select League" />
-                                          <Label fx:id="selectTeam" text="Select Team" GridPane.columnIndex="1" />
-                                          <ComboBox fx:id="choseLeagueToTable" prefHeight="28.0" prefWidth="81.0" GridPane.rowIndex="1" />
-                                          <ComboBox fx:id="choseTeamToTable" prefHeight="28.0" prefWidth="81.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#displayFilteredData" prefHeight="25.0" prefWidth="79.0" styleClass="btn" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Button fx:id="btnClearr" mnemonicParsing="false" onAction="#clearTableFilter" prefHeight="25.0" prefWidth="82.0" styleClass="btn" text="Clear" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                       </children>
-                                    </GridPane>
-                                    <TableView fx:id="tablePlayer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="355.0" styleClass="table">
-                                      <columns>
-                                        <TableColumn fx:id="colIdPlayer" prefWidth="38.666595458984375" styleClass="col" text="ID" />
-                                        <TableColumn fx:id="colNamePlayer" prefWidth="64.0" styleClass="col" text="Name" />
-                                          <TableColumn fx:id="colPlayerPos" prefWidth="64.0" styleClass="col" text="Pos" />
-                                          <TableColumn fx:id="colPlayerBirthday" prefWidth="64.0" styleClass="col" text="Bday" />
-                                          <TableColumn fx:id="colPlayerLeague" prefWidth="64.0" styleClass="col" text="League" />
-                                          <TableColumn fx:id="colPlayerTeam" prefWidth="64.66668701171875" styleClass="col" text="Team" />
-                                      </columns>
-                                       <VBox.margin>
-                                          <Insets top="7.0" />
-                                       </VBox.margin>
-                                    </TableView>
-                                    <Pagination fx:id="pagination" prefHeight="72.0" prefWidth="352.0" />
-                                 </children>
-                              </VBox>
-                              <GridPane layoutX="13.0" layoutY="440.0" prefHeight="31.0" prefWidth="565.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Button fx:id="btnAddPlayer" mnemonicParsing="false" onAction="#addPlayer" prefHeight="35.0" prefWidth="138.0" text="Add Player">
-                                       <styleClass>
-                                          <String fx:value="btn1" />
-                                          <String fx:value="green" />
-                                       </styleClass></Button>
-                                    <Button fx:id="btnUpdatePlayer" mnemonicParsing="false" onAction="#updatePlayer" prefHeight="37.0" prefWidth="138.0" text="Update Player" GridPane.columnIndex="1">
-                                       <styleClass>
-                                          <String fx:value="btn1" />
-                                          <String fx:value="green" />
-                                       </styleClass></Button>
-                                    <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearPlayer" prefHeight="36.0" prefWidth="138.0" text="Clear" GridPane.columnIndex="3">
-                                       <styleClass>
-                                          <String fx:value="red" />
-                                          <String fx:value="btn1" />
-                                       </styleClass></Button>
-                                    <Button fx:id="btnDeletePlayer" mnemonicParsing="false" onAction="#deletePlayer" prefHeight="38.0" prefWidth="137.0" text="Delete Player" GridPane.columnIndex="2">
-                                       <styleClass>
-                                          <String fx:value="btn1" />
-                                          <String fx:value="red" />
-                                       </styleClass></Button>
-                                 </children>
-                              </GridPane>
+                              <TextField fx:id="txtPlayerName" promptText="Enter player's name..." style="-fx-background-radius: 11;" stylesheets="@../css/design.css" GridPane.rowIndex="1">
+                                 <styleClass>
+                                    <String fx:value="inputs" />
+                                    <String fx:value="playerSpaces" />
+                                 </styleClass>
+                              </TextField>
+                              <Label fx:id="name" stylesheets="@../css/design.css" text="Name" />
+                              <DatePicker fx:id="datePlayerBirthday" prefHeight="41.0" prefWidth="203.0" promptText="Enter the birthday" style="-fx-background-radius: 11;" stylesheets="@../css/design.css" GridPane.rowIndex="5">
+                                 <styleClass>
+                                    <String fx:value="inputs" />
+                                    <String fx:value="playerSpaces" />
+                                 </styleClass>
+                              </DatePicker>
+                              <Label fx:id="birthday" stylesheets="@../css/design.css" text="Birthday" GridPane.rowIndex="4" />
+                              <Label fx:id="league" stylesheets="@../css/design.css" text="League" GridPane.rowIndex="6" />
+                              <ComboBox fx:id="chosePlayerLeague" prefHeight="36.0" prefWidth="205.0" style="-fx-background-radius: 11;" stylesheets="@../css/design.css" GridPane.rowIndex="7">
+                                 <styleClass>
+                                    <String fx:value="playerSpaces" />
+                                    <String fx:value="combo-box" />
+                                 </styleClass>
+                              </ComboBox>
+                              <ComboBox fx:id="chosePlayerTeam" prefHeight="51.0" prefWidth="205.0" style="-fx-background-radius: 11;" stylesheets="@../css/design.css" GridPane.rowIndex="9">
+                                 <styleClass>
+                                    <String fx:value="playerSpaces" />
+                                    <String fx:value="combo-box" />
+                                 </styleClass>
+                              </ComboBox>
+                              <Label fx:id="team" stylesheets="@../css/design.css" text="Team" GridPane.rowIndex="8" />
+                              <Label fx:id="position" stylesheets="@../css/design.css" text="Position" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtPlayerPosition" promptText="Enter position" style="-fx-background-radius: 11;" stylesheets="@../css/design.css" GridPane.rowIndex="3">
+                                 <styleClass>
+                                    <String fx:value="inputs" />
+                                    <String fx:value="playerSpaces" />
+                                 </styleClass>
+                              </TextField>
                            </children>
-                        </AnchorPane>
+                        </GridPane>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="153.0" prefWidth="206.0">
+                           <children>
+                              <Label fx:id="photo" prefHeight="32.0" prefWidth="205.0" stylesheets="@../css/design.css" text="Photo">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <ImageView fx:id="imagePlayer" fitHeight="50.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="60.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
                      </children>
-                  </AnchorPane>
-               </center>
-            </BorderPane>
-         </center>
-      </BorderPane>
+                  </VBox>
+                  <VBox layoutX="238.0" layoutY="24.0" prefHeight="450.0" prefWidth="350.0">
+                     <children>
+                        <GridPane prefHeight="69.0" prefWidth="355.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="30.333343505859375" minHeight="10.0" prefHeight="25.666671752929688" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="48.33332824707031" minHeight="10.0" prefHeight="44.33332824707031" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="selectLeague" text="Select League" />
+                              <Label fx:id="selectTeam" text="Select Team" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="choseLeagueToTable" prefHeight="28.0" prefWidth="81.0" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="choseTeamToTable" prefHeight="28.0" prefWidth="81.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#displayFilteredData" prefHeight="25.0" prefWidth="79.0" styleClass="btn" stylesheets="@../css/design.css" text="Search" textFill="#363333" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button fx:id="btnClearr" mnemonicParsing="false" onAction="#clearTableFilter" prefHeight="25.0" prefWidth="82.0" styleClass="btn" stylesheets="@../css/design.css" text="Clear" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <TableView fx:id="tablePlayer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="355.0" styleClass="playerTable" stylesheets="@../css/design.css">
+                          <columns>
+                            <TableColumn fx:id="colIdPlayer" prefWidth="38.666595458984375" styleClass="col" text="ID" />
+                            <TableColumn fx:id="colNamePlayer" prefWidth="64.0" styleClass="col" text="Name" />
+                              <TableColumn fx:id="colPlayerPos" prefWidth="64.0" styleClass="col" text="Pos" />
+                              <TableColumn fx:id="colPlayerBirthday" prefWidth="64.0" styleClass="col" text="Bday" />
+                              <TableColumn fx:id="colPlayerLeague" prefWidth="64.0" styleClass="col" text="League" />
+                              <TableColumn fx:id="colPlayerTeam" prefWidth="64.66668701171875" styleClass="col" text="Team" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets top="7.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <Pagination fx:id="pagination" prefHeight="60.0" prefWidth="355.0" />
+                     </children>
+                  </VBox>
+                  <GridPane layoutX="42.0" layoutY="479.0" prefHeight="31.0" prefWidth="565.0" stylesheets="@../css/design.css">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearPlayer" prefHeight="36.0" prefWidth="138.0" stylesheets="@../css/design.css" text="Clear" GridPane.columnIndex="3">
+                           <styleClass>
+                              <String fx:value="red" />
+                              <String fx:value="btn1" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="btnDeletePlayer" mnemonicParsing="false" onAction="#deletePlayer" prefHeight="38.0" prefWidth="137.0" stylesheets="@../css/design.css" text="Delete Player" GridPane.columnIndex="2">
+                           <styleClass>
+                              <String fx:value="btn1" />
+                              <String fx:value="red" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="btnUpdatePlayer" mnemonicParsing="false" onAction="#updatePlayer" prefHeight="37.0" prefWidth="138.0" stylesheets="@../css/design.css" text="Update Player" GridPane.columnIndex="1">
+                           <styleClass>
+                              <String fx:value="btn1" />
+                              <String fx:value="green" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="btnAddPlayer" mnemonicParsing="false" onAction="#addPlayer" prefHeight="35.0" prefWidth="138.0" stylesheets="@../css/design.css" text="Add Player">
+                           <styleClass>
+                              <String fx:value="btn1" />
+                              <String fx:value="green" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <Button fx:id="btnBrowseImage" layoutX="16.0" layoutY="423.0" mnemonicParsing="false" onAction="#browseImagePlayer" prefHeight="39.0" prefWidth="133.0" styleClass="btn" stylesheets="@../css/design.css" text="Browse Image" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <VBox layoutY="-1.0" prefHeight="598.0" prefWidth="250.0">
+          <children>
+              <fx:include source="navbar_form.fxml" />
+          </children>
+      </VBox>
    </children>
 </AnchorPane>

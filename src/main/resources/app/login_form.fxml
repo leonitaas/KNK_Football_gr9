@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="back" stylesheets="@../css/logindesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="logIn" stylesheets="@../css/design.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <Label fx:id="lblEmail" layoutX="64.0" layoutY="149.0" prefHeight="22.0" prefWidth="54.0" text="Email" textFill="WHITE">
          <font>
@@ -18,13 +18,13 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="txtEmail" layoutX="141.0" layoutY="147.0" prefHeight="26.0" prefWidth="168.0" />
-      <PasswordField fx:id="pwdPassword" layoutX="141.0" layoutY="195.0" prefHeight="26.0" prefWidth="168.0" />
-      <Button fx:id="btnlogin" layoutX="184.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="31.0" prefWidth="81.0" styleClass=".button" stylesheets="@../css/logindesign.css" text="Log in" textFill="WHITE">
+      <TextField fx:id="txtEmail" layoutX="141.0" layoutY="147.0" prefHeight="26.0" prefWidth="168.0" styleClass="spaces" stylesheets="@../css/design.css" />
+      <PasswordField fx:id="pwdPassword" layoutX="141.0" layoutY="195.0" prefHeight="26.0" prefWidth="168.0" styleClass="spaces" stylesheets="@../css/design.css" />
+      <Button fx:id="btnlogin" layoutX="184.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleLoginClick" prefHeight="31.0" prefWidth="81.0" stylesheets="@../css/design.css" text="Log in" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label fx:id="lblCreateAcc" layoutX="168.0" layoutY="324.0" onMouseClicked="#handleCreateAccountClick" styleClass="link" stylesheets="@../css/logindesign.css" text="Create new account" textFill="WHITE" underline="true">
+      <Label fx:id="lblCreateAcc" layoutX="168.0" layoutY="324.0" onMouseClicked="#handleCreateAccountClick" styleClass="link" stylesheets="@../css/design.css" text="Create new account" textFill="WHITE" underline="true">
          <font>
             <Font size="13.0" />
          </font></Label>

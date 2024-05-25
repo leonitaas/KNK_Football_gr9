@@ -52,7 +52,7 @@ public class LeagueRepository {
             String sqlDeleteLeague = "DELETE FROM league WHERE id = ?";
             statement = connection.prepareStatement(sqlDeleteLeague);
             statement.setInt(1, id);
-            statement.executeUpdate();
+            statement. executeUpdate();
 
             connection.commit();
 
@@ -182,4 +182,15 @@ public class LeagueRepository {
         }
         return null;
     }
+
+    public static void UpdateWithoutImage(League league) throws SQLException {
+        String sql = "UPDATE league SET name = ? WHERE id = ?";
+        try (Connection connection = ConnectionUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, league.getName());
+            statement.setInt(2, league.getId());
+            statement.executeUpdate();
+        }
+    }
+
 }
