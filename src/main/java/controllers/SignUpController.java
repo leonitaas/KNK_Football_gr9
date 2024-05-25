@@ -15,6 +15,7 @@ import models.dto.UserDto;
 import service.UserService;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SignUpController {
@@ -60,23 +61,32 @@ public class SignUpController {
 
     @FXML
     private void handleSignUp(ActionEvent ae){
-        System.out.println("Attempting to sign up.");
-        UserDto userSignUpData = new UserDto(
-                this.txtFirstName.getText(),
-                this.txtLastName.getText(),
-                this.txtEmail.getText(),
-                this.pwdPassword.getText(),
-                this.pwdConfirmPassword.getText()
-        );
+        if (txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() ||
+                txtEmail.getText().isEmpty() || pwdPassword.getText().isEmpty() ||
+                pwdConfirmPassword.getText().isEmpty()) {
 
-        boolean response = UserService.signUp(userSignUpData);
-        System.out.println("SignUp Response: " + response);
+            System.out.println("All fields are required.");
+        }
+        else {
+            System.out.println("Attempting to sign up.");
+            UserDto userSignUpData = new UserDto(
+                    this.txtFirstName.getText(),
+                    this.txtLastName.getText(),
+                    this.txtEmail.getText(),
+                    this.pwdPassword.getText(),
+                    this.pwdConfirmPassword.getText()
 
-        if(response){
-            System.out.println("Navigating to login page.");
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-        } else {
-            System.out.println("SignUp failed.");
+            );
+
+            boolean response = UserService.signUp(userSignUpData);
+            System.out.println("SignUp Response: " + response);
+
+            if (response) {
+                System.out.println("Navigating to login page.");
+                Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            } else {
+                System.out.println("SignUp failed.");
+            }
         }
     }
 
@@ -100,4 +110,4 @@ public class SignUpController {
 //
 //}
 
-}
+   }

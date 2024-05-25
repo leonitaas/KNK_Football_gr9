@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import models.User;
 import models.dto.LoginUserDto;
@@ -33,20 +35,25 @@ public class LoginController {
 
     @FXML
     private Text txtWelcome;
+
     @FXML
     private void handleLoginClick(ActionEvent ae){
-        LoginUserDto loginUserData = new LoginUserDto(
-                this.txtEmail.getText(),
-                this.pwdPassword.getText()
-        );
+        if ( txtEmail.getText().isEmpty() || pwdPassword.getText().isEmpty() ){
+            System.out.println("All fields are required.");
+        }
+        else {
+            LoginUserDto loginUserData = new LoginUserDto(
+                    this.txtEmail.getText(),
+                    this.pwdPassword.getText()
+            );
 
-        boolean isLogin = UserService.login(loginUserData);
+            boolean isLogin = UserService.login(loginUserData);
 //        User user = UserService.login(loginUserData);
 //        if(user != null){
 //            SessionManager.setUser(user);
             Navigator.navigate(ae, Navigator.HOME_PAGE);
 //        }
-
+        }
     }
 
     @FXML
