@@ -1,6 +1,6 @@
 package controllers;
 
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import models.League;
 import models.Team;
 import repository.LeagueRepository;
@@ -171,59 +171,10 @@ public class manageTeamsController extends  TranslatorController implements Init
     void deleteTeam(ActionEvent event) {
 
 
-        try {
-            TeamRepository.Delete(teamTable);
-            fetchData(); // Refresh the table data
-
-            // Show confirmation alert
-            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION, "Delete Team", "Team Deleted", "The selected Team has been deleted successfully.");
-        } catch (Exception e) {
-            // Show error alert if deletion fails
-            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR, "Delete Team", "Deletion Failed", "Failed to delete the selected team. Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        TeamRepository.Delete(teamTable);
+        fetchData();
     }
 
-    @FXML
-    void updateTeam(ActionEvent event) {
-        int index = teamTable.getSelectionModel().getSelectedIndex();
-
-        if (index >= 0) {
-            int id = teamTable.getItems().get(index).getId();
-            League league = choseLeague.getValue();
-            String teamName = txtTeamName.getText();
-            String teamStadium = txtStadiumName.getText();
-            String imageName = fileSource != null ? fileSource.getName() : teamTable.getItems().get(index).getLogo();
-            Path imagePath = fileSource != null ? fileSource.toPath() : null;
-
-            Team team = new Team(id, teamName, teamStadium, imageName);
-
-            try {
-             TeamRepository.update(team);
-
-                if (fileSource != null) {
-                    ImagesToResources.imageToResources(league.getName(), teamName, imageName, imagePath);
-                }
-
-                CostumedAlerts.costumeAlert(Alert.AlertType.CONFIRMATION,
-                        "Manage Teams",
-                        "Manage Teams",
-                        "The Team has been updated successfully.");
-                fetchData();
-            } catch (Exception e) {
-                CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
-                        "Manage Teams",
-                        "Manage Teams",
-                        "The Team failed to be updated.");
-                throw new RuntimeException(e);
-            }
-        } else {
-            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
-                    "Manage Teams",
-                    "Manage Teams",
-                    "No team selected for update.");
-        }
-    }
 
     @FXML
     void fetchFilteredData(ActionEvent event){
@@ -275,19 +226,18 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        fetchData();
         LeagueRepository.setValues(this.choseLeague);
         LeagueRepository.setValues(this.choseLeagueToTable);
 
-        // Set up table columns
-        colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colStadium.setCellValueFactory(new PropertyValueFactory<>("Stadium"));
-        colLeague.setCellValueFactory(new PropertyValueFactory<>("League"));
 
-        fetchData(); // Fetch data after setting up table columns
+        // Fetch data after setting up table columns
 
         getDataFromTable();
         changeLanguage();
     }
 
+    public void updateTeam(ActionEvent actionEvent) {
+    }
 }
