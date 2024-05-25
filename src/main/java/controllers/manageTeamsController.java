@@ -238,6 +238,4 @@ public class manageTeamsController extends  TranslatorController implements Init
         changeLanguage();
     }
 
-    public void updateTeam(ActionEvent actionEvent) {
-    }
 }
