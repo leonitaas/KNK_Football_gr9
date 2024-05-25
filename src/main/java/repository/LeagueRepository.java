@@ -21,6 +21,15 @@ public class LeagueRepository {
 
     public static void insert(League league) throws SQLException {
         Connection connection = ConnectionUtil.getConnection();
+        String checkSql = "SELECT COUNT(*) FROM league WHERE id = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(checkSql);
+        checkStatement.setInt(1, league.getId());
+        ResultSet resultSet = checkStatement.executeQuery();
+        resultSet.next();
+        if (resultSet.getInt(1) > 0) {
+            throw new SQLException("Duplicate entry for key 'league.PRIMARY'");
+        }
+
         String sql = "INSERT INTO league (id, name, league_logo) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, league.getId());
@@ -52,7 +61,7 @@ public class LeagueRepository {
             String sqlDeleteLeague = "DELETE FROM league WHERE id = ?";
             statement = connection.prepareStatement(sqlDeleteLeague);
             statement.setInt(1, id);
-            statement. executeUpdate();
+            statement.executeUpdate();
 
             connection.commit();
 
@@ -77,7 +86,6 @@ public class LeagueRepository {
             if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
         }
     }
-
 
     public static void Update(TableView<League> table, League league, Path fileSource, String imageName) {
         int index = table.getSelectionModel().getSelectedIndex();
@@ -106,7 +114,6 @@ public class LeagueRepository {
             }
         } catch (SQLException e) {
             CostumedAlerts.costumeAlert(Alert.AlertType.ERROR, "Manage League", "Manage League", "The League Failed To Be Updated");
-
             throw new RuntimeException(e);
         }
     }
