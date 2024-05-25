@@ -64,14 +64,16 @@ navy: #164B60
 }
 /*--------------Team css---------------------*/
 .teamButton{
--fx-background-color:  #9DDE8B;
+-fx-background-color:  #65B741;
 -fx-cursor: hand;
 }
 .teamButton:hover{
--fx-background-color: #65B741 ;
+-fx-background-color: #FDDE55 ;
 }
 .table{
+-fx-background-radius:10;
 -fx-cursor: hand;
+-fx-background-color: #9DDE8B;
 }
 /*----------Player css-----------------------*/
 
@@ -136,14 +138,14 @@ navy: #164B60
     -fx-cursor: hand;
 }
 .playerTable {
--fx-background-color:white;
+-fx-background-color:#9DDE8B;
 -fx-border-radius: 0 0 15 15;
 -fx-background-radius: 0 0 15 15;
 -fx-cursor: hand;
 
 }
 .playerTable:hover{
--fx-background-color: #9DDE8B;
+-fx-background-color:#65B741 ;
 }
 .col{
 -fx-background-color: #9DDE8B;

@@ -26,12 +26,12 @@
                      </font>
                   </Label>
                               <TextField fx:id="txtTeamName" prefHeight="30.0" prefWidth="211.0" styleClass="teamButton" stylesheets="@../css/design.css" />
-                              <TextField fx:id="txtStadiumName" prefHeight="30.0" prefWidth="211.0" styleClass="teamButton" stylesheets="@../css/design.css" />
                               <Label fx:id="stadium" prefHeight="18.0" prefWidth="79.0" text="Stadium" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
+                              <TextField fx:id="txtStadiumName" prefHeight="30.0" prefWidth="211.0" styleClass="teamButton" stylesheets="@../css/design.css" />
                               <Label fx:id="league" prefHeight="18.0" prefWidth="79.0" text="League" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -76,7 +76,7 @@
                                       <ComboBox fx:id="choseLeagueToTable" prefWidth="150.0" styleClass="teamButton" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
                                   </children>
                               </GridPane>
-                              <TableView fx:id="teamTable" prefHeight="281.0" prefWidth="378.0" style="-fx-background-color: white;" styleClass="table" stylesheets="@../css/design.css">
+                              <TableView fx:id="teamTable" prefHeight="281.0" prefWidth="378.0" styleClass="table" stylesheets="@../css/design.css">
                                   <columns>
                                       <TableColumn fx:id="colId" prefWidth="81.93798828125" style="-fx-background-color: #9DDE8B;" text="Id" />
                                       <TableColumn fx:id="colName" prefWidth="107.14056396484375" style="-fx-background-color: #9DDE8B;" text="Name" />
