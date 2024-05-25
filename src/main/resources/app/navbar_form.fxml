@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,6 +71,11 @@
                   <Image url="@../imagess/s/logo-football/logoja.png" />
                </image>
             </ImageView>
+                <ChoiceBox fx:id="choseLanguage" layoutY="1.0" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #FDDE55;" styleClass="chose" stylesheets="@../css/design.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ChoiceBox>
             </children>
         </AnchorPane>
     </children>
