@@ -336,7 +336,7 @@ public class managePlayerController extends TranslatorController implements Init
                         txtPlayerPosition.setText(position);
                         chosePlayerLeague.setValue(league);
                         String path = imagePath + "\\" + league + "\\" + name + "\\" + image;
-                        this.imagePlayer.setImage(new Image(path));
+
                         File file = new File(path);
                         if (file.exists()) {
                             this.imagePlayer.setImage(new Image(file.toURI().toString()));
