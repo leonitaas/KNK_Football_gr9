@@ -29,13 +29,13 @@ import service.LanguageUtil;
 public class manageMatchController implements Initializable {
 
     @FXML
-    private ComboBox<?> choseAwayTeam;
+    private ComboBox<Team> choseAwayTeam;
 
     @FXML
     private DatePicker choseDate;
 
     @FXML
-    private ComboBox<?> choseHomeTeam;
+    private ComboBox<Team> choseHomeTeam;
 
     @FXML
     private ComboBox<League> choseLeagueMatch;

@@ -46,7 +46,6 @@ public class managePlayerController extends TranslatorController implements Init
     @FXML
     private Label selectTeam;
 
-
     @FXML
     private Label name;
 
@@ -100,7 +99,6 @@ public class managePlayerController extends TranslatorController implements Init
     private Pagination pagination;
     private static String  imagePath = ImagesToResources.getImagePath();
 
-
     @FXML
     void addPlayer(ActionEvent event) {
         if (validateInputs()) {
@@ -151,12 +149,11 @@ public class managePlayerController extends TranslatorController implements Init
         return true;
     }
 
-
     @FXML
     void browseImagePlayer(ActionEvent event) {
-        fileSource = BrowseImage.browseImage(imagePath,fileSource,imagePlayer);
-
+        fileSource = BrowseImage.browseImage(imagePath, fileSource, imagePlayer);
     }
+
     public void fetchData() {
         try {
             PlayerRepository.fetchToTable(tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
@@ -169,22 +166,21 @@ public class managePlayerController extends TranslatorController implements Init
         }
     }
 
-
-    public void fetchDataToTable(){
+    public void fetchDataToTable() {
         pagination.setPageCount(100);
         int rowsPerPage = 10;
         pagination.setPageFactory(pageIndex -> {
             try {
-                PlayerRepository.fetchToTablePaginaton(pageIndex, rowsPerPage,tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerLeague,colPlayerPos,colPlayerTeam);
+                PlayerRepository.fetchToTablePaginaton(pageIndex, rowsPerPage, tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return tablePlayer;
         });
     }
+
     @FXML
     void clearPlayer(ActionEvent event) {
-
         txtPlayerPosition.clear();
         txtPlayerName.clear();
         datePlayerBirthday.setValue(null);
@@ -203,7 +199,6 @@ public class managePlayerController extends TranslatorController implements Init
                 "All fields have been cleared.");
     }
 
-
     @FXML
     void deletePlayer(ActionEvent event) {
         PlayerRepository.Delete(tablePlayer);
@@ -216,20 +211,17 @@ public class managePlayerController extends TranslatorController implements Init
 
     @FXML
     void displayFilteredData(ActionEvent event) {
-        if(choseLeagueToTable.getValue() == null){
-            CostumedAlerts.costumeAlert(Alert.AlertType.WARNING,"Manage Player","Manage Player", "Select a league ");
-        }else {
-
+        if (choseLeagueToTable.getValue() == null) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.WARNING, "Manage Player", "Manage Player", "Select a league ");
+        } else {
             League league = choseLeagueToTable.getValue();
-
             try {
                 if (choseTeamToTable.getValue() == null) {
-                    PlayerRepository.fetchToTableByLeague(tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerPos,colPlayerTeam,colPlayerLeague,league);
+                    PlayerRepository.fetchToTableByLeague(tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerPos, colPlayerTeam, colPlayerLeague, league);
                 } else {
                     Team team = choseTeamToTable.getValue();
-                    PlayerRepository.fetchToTableByTeam(tablePlayer,colIdPlayer,colNamePlayer,colPlayerBirthday,colPlayerPos,colPlayerTeam,colPlayerLeague,team);
+                    PlayerRepository.fetchToTableByTeam(tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerPos, colPlayerTeam, colPlayerLeague, team);
                 }
-
             } catch (SQLException e) {
                 CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
                         "Error",
@@ -242,10 +234,8 @@ public class managePlayerController extends TranslatorController implements Init
 
     @FXML
     void clearTableFilter() {
-
         choseTeamToTable.setValue(null);
         choseLeagueToTable.setValue(null);
-
         try {
             fetchData();
             CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
@@ -253,7 +243,6 @@ public class managePlayerController extends TranslatorController implements Init
                     "Filters Cleared",
                     "Table filters have been cleared.");
         } catch (Exception e) {
-
             CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
                     "Error",
                     "Error clearing table filters",
@@ -265,7 +254,6 @@ public class managePlayerController extends TranslatorController implements Init
     @FXML
     void updatePlayer(ActionEvent event) {
         Player selectedPlayer = tablePlayer.getSelectionModel().getSelectedItem();
-
         if (selectedPlayer == null) {
             CostumedAlerts.costumeAlert(Alert.AlertType.WARNING,
                     "Update Player",
@@ -273,25 +261,20 @@ public class managePlayerController extends TranslatorController implements Init
                     "Please select a player to update.");
             return;
         }
-
         String newName = txtPlayerName.getText();
         String newPosition = txtPlayerPosition.getText();
         Date newBirthday = Date.valueOf(datePlayerBirthday.getValue());
-        Team newTeam = chosePlayerTeam.getValue(); // Retrieve selected team
-
+        Team newTeam = chosePlayerTeam.getValue();
         selectedPlayer.setName(newName);
         selectedPlayer.setPosition(newPosition);
         selectedPlayer.setBirthday(newBirthday);
-        selectedPlayer.setTeam(newTeam); // Set the selected team
-
+        selectedPlayer.setTeam(newTeam);
         try {
             PlayerRepository.update(selectedPlayer, tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
-
             CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
                     "Update Player",
                     "Player Updated",
                     "The selected player has been updated successfully.");
-
             clearPlayer(event);
         } catch (SQLException e) {
             CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,
@@ -302,23 +285,20 @@ public class managePlayerController extends TranslatorController implements Init
         }
     }
 
-
-
-    static void setValuesToTeams(ComboBox<League> chosePlayerLeague,ComboBox<Team> chosePlayerTeam){
+    static void setValuesToTeams(ComboBox<League> chosePlayerLeague, ComboBox<Team> chosePlayerTeam) {
         chosePlayerLeague.setOnAction(actionEvent -> {
-            if(chosePlayerLeague.getValue() !=null){
-
+            if (chosePlayerLeague.getValue() != null) {
                 chosePlayerTeam.getItems().clear();
-
                 League league = chosePlayerLeague.getValue();
-                TeamRepository.setValues(chosePlayerTeam,league);
+                TeamRepository.setValues(chosePlayerTeam, league);
             }
         });
     }
-    public void getDataFromTable(){
-        tablePlayer.setRowFactory( tv -> {
+
+    public void getDataFromTable() {
+        tablePlayer.setRowFactory(tv -> {
             TableRow<Player> myRow = new TableRow<>();
-            myRow.setOnMouseClicked( event ->{
+            myRow.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!myRow.isEmpty())) {
                     int myIndex = tablePlayer.getSelectionModel().getSelectedIndex();
                     int id = tablePlayer.getItems().get(myIndex).getId();
@@ -336,23 +316,21 @@ public class managePlayerController extends TranslatorController implements Init
                         txtPlayerPosition.setText(position);
                         chosePlayerLeague.setValue(league);
                         String path = imagePath + "\\" + league + "\\" + name + "\\" + image;
-
                         File file = new File(path);
                         if (file.exists()) {
                             this.imagePlayer.setImage(new Image(file.toURI().toString()));
                         } else {
-                            // Handle the case where the image file does not exist
                             this.imagePlayer.setImage(null);
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-
                 }
             });
             return myRow;
         });
     }
+
     @Override
     void translateEnglish() {
         Locale currentLocale = new Locale("en");
@@ -364,9 +342,8 @@ public class managePlayerController extends TranslatorController implements Init
         photo.setText(translate.getString("label.photo"));
         selectLeague.setText(translate.getString("label.selectLeague"));
         selectTeam.setText(translate.getString("label.selectTeam"));
-
-
     }
+
     @Override
     void translateAlbanian() {
         Locale currentLocale = new Locale("sq");
@@ -380,26 +357,13 @@ public class managePlayerController extends TranslatorController implements Init
         selectTeam.setText(translate.getString("label.selectTeam"));
     }
 
-    public void changeLanguage(){
-        LanguageUtil.languageProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.equals("Albanian")) {
-                translateAlbanian();
-            } else {
-                translateEnglish();
-            }
-        });
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setValuesToTeams(this.chosePlayerLeague,this.chosePlayerTeam);
-        setValuesToTeams(this.choseLeagueToTable,this.choseTeamToTable);
-
+        setValuesToTeams(this.chosePlayerLeague, this.chosePlayerTeam);
+        setValuesToTeams(this.choseLeagueToTable, this.choseTeamToTable);
         LeagueRepository.setValues(this.chosePlayerLeague);
         LeagueRepository.setValues(this.choseLeagueToTable);
-
         fetchDataToTable();
         getDataFromTable();
-        changeLanguage();
     }
 }

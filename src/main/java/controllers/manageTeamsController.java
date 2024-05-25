@@ -227,15 +227,15 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     }
 
-    public void changeLanguage(){
-        LanguageUtil.languageProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.equals("Albanian")) {
-                translateAlbanian();
-            } else {
-                translateEnglish();
-            }
-        });
-    }
+//    public void changeLanguage(){
+//        LanguageUtil.languageProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue.equals("Albanian")) {
+//                translateAlbanian();
+//            } else {
+//                translateEnglish();
+//            }
+//        });
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -244,7 +244,7 @@ public class manageTeamsController extends  TranslatorController implements Init
 
         fetchData();
         getDataFromTable();
-        changeLanguage();
+       // changeLanguage();
     }
 
 }

@@ -1,22 +1,14 @@
 package service;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class LanguageUtil {
 
-    private static final StringProperty language = new SimpleStringProperty("English");
+    private static String language = "English";
 
-    public static StringProperty languageProperty(){
+    public static void setLanguage(String newLanguage) {
+        language = newLanguage;
+    }
+
+    public static String getLanguage() {
         return language;
     }
-
-    public static String getLanguage(){
-        return language.get();
-    }
-
-    public static void setLanguage(String lang) {
-        language.set(lang);
-    }
-
 }
