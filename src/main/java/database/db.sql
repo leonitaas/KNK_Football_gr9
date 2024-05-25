@@ -160,3 +160,28 @@ ALTER TABLE users
     DROP COLUMN pass,
     DROP COLUMN date_create,
     DROP COLUMN date_modified;
+
+USE knk_football;
+
+-- Insert values into the league table
+INSERT INTO league (name) VALUES ('Premier League');
+INSERT INTO league (name) VALUES ('La Liga');
+INSERT INTO league (name) VALUES ('Serie A');
+
+-- Insert values into the team table
+INSERT INTO team (name, stadium) VALUES ('Team A', 'Stadium A');
+INSERT INTO team (name, stadium) VALUES ('Team B', 'Stadium B');
+INSERT INTO team (name, stadium) VALUES ('Team C', 'Stadium C');
+
+-- Insert values into the matches table
+INSERT INTO matches (hometeam_id, awayteam_id, hometeam_goals, awayteam_goals, match_date)
+VALUES (1, 2, 2, 1, '2023-05-20 15:00:00');
+INSERT INTO matches (hometeam_id, awayteam_id, hometeam_goals, awayteam_goals, match_date)
+VALUES (2, 3, 3, 0, '2023-06-22 18:00:00');
+INSERT INTO matches (hometeam_id, awayteam_id, hometeam_goals, awayteam_goals, match_date)
+VALUES (3, 1, 1, 1, '2023-07-12 20:00:00');
+
+-- Insert values into the league_matches table
+INSERT INTO league_matches (league_id, match_id) VALUES (1, 1);
+INSERT INTO league_matches (league_id, match_id) VALUES (2, 2);
+INSERT INTO league_matches (league_id, match_id) VALUES (3, 3);
