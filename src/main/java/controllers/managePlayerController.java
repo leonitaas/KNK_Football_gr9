@@ -1,5 +1,9 @@
 package controllers;
 
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import models.*;
 import repository.LeagueRepository;
 import repository.PlayerRepository;
@@ -48,6 +52,17 @@ public class managePlayerController extends TranslatorController implements Init
 
     @FXML
     private Label name;
+
+    @FXML
+    private Button btnAddPlayer;
+
+    @FXML
+    private Button btnUpdatePlayer;
+    @FXML
+    private Button btnDeletePlayer;
+    @FXML
+    private Button btnClear;
+
 
     @FXML
     private ComboBox<League> choseLeagueToTable;
@@ -359,11 +374,54 @@ public class managePlayerController extends TranslatorController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setValuesToTeams(this.chosePlayerLeague, this.chosePlayerTeam);
-        setValuesToTeams(this.choseLeagueToTable, this.choseTeamToTable);
+        setValuesToTeams(this.chosePlayerLeague,this.chosePlayerTeam);
+        setValuesToTeams(this.choseLeagueToTable,this.choseTeamToTable);
+
         LeagueRepository.setValues(this.chosePlayerLeague);
         LeagueRepository.setValues(this.choseLeagueToTable);
+
         fetchDataToTable();
         getDataFromTable();
+
+        EventHandler<KeyEvent> arrowKeyEventHandler = event -> {
+            KeyCode keyCode = event.getCode();
+            if (keyCode == KeyCode.LEFT || keyCode == KeyCode.RIGHT || keyCode == KeyCode.UP || keyCode == KeyCode.DOWN) {
+                if (event.getSource() instanceof Control) {
+                    Control control = (Control) event.getSource();
+                    navigateControls(keyCode, control);
+                }
+            } else if (keyCode == KeyCode.ENTER) {
+                handleEnterPressed();
+            }
+        };
+
+
+        btnAddPlayer.setOnKeyPressed(arrowKeyEventHandler);
+        btnUpdatePlayer.setOnKeyPressed(arrowKeyEventHandler);
+        btnDeletePlayer.setOnKeyPressed(arrowKeyEventHandler);
+        btnClear.setOnKeyPressed(arrowKeyEventHandler);
+        chosePlayerLeague.setOnKeyPressed(arrowKeyEventHandler);
+        chosePlayerTeam.setOnKeyPressed(arrowKeyEventHandler);
+        choseLeagueToTable.setOnKeyPressed(arrowKeyEventHandler);
+        choseTeamToTable.setOnKeyPressed(arrowKeyEventHandler);
     }
+
+    private void handleEnterPressed() {
+        Node focusedNode = btnAddPlayer.getScene().getFocusOwner();
+        if (focusedNode instanceof Button) {
+            ((Button) focusedNode).fire();
+        } else if (focusedNode instanceof ComboBox) {
+            ((ComboBox<?>) focusedNode).getSelectionModel().selectNext();
+        }
+    }
+
+    private void navigateControls(KeyCode keyCode, Control control) {
+        if (keyCode == KeyCode.LEFT || keyCode == KeyCode.UP) {
+            control.getParent().lookup(".focused").isFocusTraversable();
+        } else if (keyCode == KeyCode.RIGHT || keyCode == KeyCode.DOWN) {
+            control.getParent().lookup(".focused").isFocused();
+        }
+    }
+
 }
+
