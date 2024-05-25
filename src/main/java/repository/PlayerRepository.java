@@ -42,25 +42,86 @@ public class PlayerRepository {
         int id = tablePlayer.getItems().get(index).getId();
         League league = tablePlayer.getItems().get(index).getLeague();
         Team team = tablePlayer.getItems().get(index).getTeam();
-        try {
-            Player player = findById(id);
-            String sql = "Delete From player where id = ?";
-            Connection connection = ConnectionUtil.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,id);
-            statement.executeUpdate();
-            String path = ImagesToResources.getImagePath()+"\\"+league+"\\"+team +"\\"+player.getImage();
-            File file = new File(path);
-            if(file.delete()){
-                System.out.println("File deleted successfully");
-            }
-            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,"Manage Players","Manage Players","The player has been deleted!");
-        } catch (SQLException e) {
-            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR,"Manage Players","Manage Players","The player failed to be deleted!");
 
-            throw new RuntimeException(e);
+        Connection connection = null;
+        PreparedStatement deletePlayerSquadStmt = null;
+        PreparedStatement deleteStatsStmt = null;
+        PreparedStatement deletePlayerStmt = null;
+
+        try {
+
+            connection = ConnectionUtil.getConnection();
+            connection.setAutoCommit(false);
+
+            String deletePlayerSquadSql = "DELETE FROM playersquad WHERE pid = ?";
+            deletePlayerSquadStmt = connection.prepareStatement(deletePlayerSquadSql);
+            deletePlayerSquadStmt.setInt(1, id);
+            deletePlayerSquadStmt.executeUpdate();
+
+            String deleteStatsSql = "DELETE FROM player_statistics WHERE player_id = ?";
+            deleteStatsStmt = connection.prepareStatement(deleteStatsSql);
+            deleteStatsStmt.setInt(1, id);
+            deleteStatsStmt.executeUpdate();
+
+            String deletePlayerSql = "DELETE FROM player WHERE id = ?";
+            deletePlayerStmt = connection.prepareStatement(deletePlayerSql);
+            deletePlayerStmt.setInt(1, id);
+            deletePlayerStmt.executeUpdate();
+
+            connection.commit();
+
+            Player player = findById(id);
+
+            System.out.println("File deleted successfully");
+
+            CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION, "Manage Players", "Manage Players", "The player has been deleted!");
+
+        } catch (SQLException e) {
+
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                }
+            }
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR, "Manage Players", "Manage Players", "The player failed to be deleted!");
+            e.printStackTrace();
+
+        } finally {
+
+            if (deletePlayerSquadStmt != null) {
+                try {
+                    deletePlayerSquadStmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (deleteStatsStmt != null) {
+                try {
+                    deleteStatsStmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (deletePlayerStmt != null) {
+                try {
+                    deletePlayerStmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.setAutoCommit(true);
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
+
     public static int findIdByData(Player player) throws SQLException {
         String sql = "Select * from player where name=? and position =? and birthday= ? and image = ?";
         Connection connection = ConnectionUtil.getConnection();
@@ -238,114 +299,19 @@ public class PlayerRepository {
         }
     }
 
-    public static ObservableList<Player> getAllPlayerByLeagueGoals(League league) throws SQLException {
-        ObservableList players = FXCollections.observableArrayList();
-        String sql = "Select * from player p " +
-                "Inner join playersquad sp on sp.pid = p.id " +
-                "Inner join squad s on sp.squad_id = s.id " +
-                "Inner join team t on t.id = s.team_id " +
-                "Inner join league_team lt on lt.team_id = t.id " +
-                "Inner join league l on l.id = lt.league_id " +
-                "Inner join player_statistics ps on ps.player_id = p.id " +
-                "Where l.id = ? " +
-                "Order By ps.goals desc;";
-        Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,league.getId());
-        ResultSet result = statement.executeQuery();
 
-        while (result.next()){
-            Player player = new Player(
-                    result.getInt("id"),
-                    result.getString("name"),
-                    result.getString("position"),
-                    result.getDate("birthday"),
-                    result.getString("image")
-
-            );
-            players.add(player);
-        }
-        return players;
-    }
-
-    public static Team getPlayerTeam(Player player) throws SQLException {
-        String sql = "Select * from team t " +
-                "inner join squad s on s.team_id = t.id " +
-                "inner join playersquad sp on sp.sid = s.id " +
-                "inner join player p on sp.pid = p.id " +
-                "where p.id = ?";
-        Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,player.getId());
-        ResultSet result = statement.executeQuery();
-        while (result.next()){
-            Team team = new Team(result.getInt("id"),
-                    result.getString("name"),
-                    result.getString("stadium"),
-                    result.getString("logo")
-
-            );
-            return team;
-        }
-        return null;
-    }
-
-    public static ObservableList<Player> getAllPlayerByLeagueAssist(League league) throws SQLException {
-        ObservableList players = FXCollections.observableArrayList();
-        String sql = "Select * from player p " +
-                "Inner join playersquad sp on sp.pid = p.id " +
-                "Inner join squad s on sp.sid = s.id " +
-                "Inner join team t on t.id = s.team_id " +
-                "Inner join league_team lt on lt.team_id = t.id " +
-                "Inner join league l on l.id = lt.league_id " +
-                "Inner join player_statistics ps on ps.player_id = p.id " +
-                "Where l.id = ? " +
-                "Order By ps.assists desc;";
-        Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,league.getId());
-        ResultSet result = statement.executeQuery();
-
-        while (result.next()){
-            Player player = new Player(
-                    result.getInt("id"),
-                    result.getString("name"),
-                    result.getString("position"),
-                    result.getDate("birthday"),
-                    result.getString("image")
-
-            );
-            players.add(player);
-        }
-        return players;
-    }
-
-    public static void getTopScorers(XYChart.Series<String, Integer> series1, XYChart.Series<String, Integer> series2) throws SQLException {
-        String sql = "SELECT p.name,ps.goals as goals , COUNT(CASE WHEN g.penalty = 1 THEN 1 END) AS penalties_scored\n" +
-                "FROM Player p\n" +
-                "JOIN Player_Statistics ps ON p.id = ps.player_id\n" +
-                "JOIN Goal g ON ps.player_id = g.scored\n" +
-                "GROUP BY p.name, ps.goals\n" +
-                "ORDER BY ps.goals DESC\n" +
-                "LIMIT 10;";
-        Connection connection = ConnectionUtil.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet result = statement.executeQuery();
-        while (result.next()){
-            series1.getData().add(new XYChart.Data<>(result.getString("name"),result.getInt("penalties_scored")));
-            series2.getData().add(new XYChart.Data<>(result.getString("name"),result.getInt("goals")));
-        }
-    }
-    public static void update(Player player) throws SQLException {
-        String sql = "UPDATE player SET name=?, position=?, birthday=?, team_id=?, league_id=? WHERE id=?";
+    public static void update(Player player, TableView<Player> tablePlayer, TableColumn<Player, Integer> colIdPlayer,
+                              TableColumn<Player, String> colNamePlayer, TableColumn<Player, Date> colPlayerBirthday,
+                              TableColumn<Player, League> colPlayerLeague, TableColumn<Player, String> colPlayerPos,
+                              TableColumn<Player, Team> colPlayerTeam) throws SQLException {
+        String sql = "UPDATE player SET name=?, position=?, birthday=?, image=? WHERE id=?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, player.getName());
         statement.setString(2, player.getPosition());
         statement.setDate(3, player.getBirthday());
-        statement.setInt(4, player.getTeam().getId());
-        statement.setInt(5, player.getLeague().getId());
-        statement.setInt(6, player.getId());
+        statement.setString(4, player.getImage());
+        statement.setInt(5, player.getId());
 
         int rowsAffected = statement.executeUpdate();
 
@@ -361,7 +327,13 @@ public class PlayerRepository {
                     "Player Updated",
                     "Player with ID: " + player.getId() + " has been updated successfully.");
         }
+
+        fetchToTable(tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
     }
+
+
+
+
 
 
     public static void fetchToTablePaginaton(Integer pageIndex, int rowsPerPage, TableView<Player> tablePlayer, TableColumn<Player, Integer> colIdPlayer, TableColumn<Player, String> colNamePlayer, TableColumn<Player, Date> colPlayerBirthday, TableColumn<Player, League> colPlayerLeague, TableColumn<Player, String> colPlayerPos, TableColumn<Player, Team> colPlayerTeam) throws SQLException {

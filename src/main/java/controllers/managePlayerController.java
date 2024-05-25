@@ -277,17 +277,15 @@ public class managePlayerController extends TranslatorController implements Init
         String newName = txtPlayerName.getText();
         String newPosition = txtPlayerPosition.getText();
         Date newBirthday = Date.valueOf(datePlayerBirthday.getValue());
-        Team newTeam = chosePlayerTeam.getValue();
-        League newLeague = chosePlayerLeague.getValue();
+        Team newTeam = chosePlayerTeam.getValue(); // Retrieve selected team
 
         selectedPlayer.setName(newName);
         selectedPlayer.setPosition(newPosition);
         selectedPlayer.setBirthday(newBirthday);
-        selectedPlayer.setTeam(newTeam);
-        selectedPlayer.setLeague(newLeague);
+        selectedPlayer.setTeam(newTeam); // Set the selected team
 
         try {
-            PlayerRepository.update(selectedPlayer);
+            PlayerRepository.update(selectedPlayer, tablePlayer, colIdPlayer, colNamePlayer, colPlayerBirthday, colPlayerLeague, colPlayerPos, colPlayerTeam);
 
             CostumedAlerts.costumeAlert(Alert.AlertType.INFORMATION,
                     "Update Player",
@@ -305,6 +303,7 @@ public class managePlayerController extends TranslatorController implements Init
     }
 
 
+
     static void setValuesToTeams(ComboBox<League> chosePlayerLeague,ComboBox<Team> chosePlayerTeam){
         chosePlayerLeague.setOnAction(actionEvent -> {
             if(chosePlayerLeague.getValue() !=null){
@@ -316,12 +315,11 @@ public class managePlayerController extends TranslatorController implements Init
             }
         });
     }
-
     public void getDataFromTable(){
         tablePlayer.setRowFactory( tv -> {
             TableRow<Player> myRow = new TableRow<>();
             myRow.setOnMouseClicked( event ->{
-                if (event.getClickCount() == 1 && (!myRow.isEmpty())){
+                if (event.getClickCount() == 1 && (!myRow.isEmpty())) {
                     int myIndex = tablePlayer.getSelectionModel().getSelectedIndex();
                     int id = tablePlayer.getItems().get(myIndex).getId();
                     try {
@@ -337,8 +335,15 @@ public class managePlayerController extends TranslatorController implements Init
                         chosePlayerTeam.setValue(team);
                         txtPlayerPosition.setText(position);
                         chosePlayerLeague.setValue(league);
-                        String path = imagePath+"\\"+league+"\\"+name+"\\"+image;
-                        this.imagePlayer.setImage( new Image(path));
+                        String path = imagePath + "\\" + league + "\\" + name + "\\" + image;
+                        this.imagePlayer.setImage(new Image(path));
+                        File file = new File(path);
+                        if (file.exists()) {
+                            this.imagePlayer.setImage(new Image(file.toURI().toString()));
+                        } else {
+                            // Handle the case where the image file does not exist
+                            this.imagePlayer.setImage(null);
+                        }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }

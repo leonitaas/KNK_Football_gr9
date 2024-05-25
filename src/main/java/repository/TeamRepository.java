@@ -38,6 +38,9 @@ public class TeamRepository {
                 statementLeagueTeam.executeUpdate();
             }
 
+            Squad squad= new Squad(1, team);
+            SquadRepository.insertByTeam(squad);
+
             connection.commit();
         } catch (SQLException ex) {
             connection.rollback();

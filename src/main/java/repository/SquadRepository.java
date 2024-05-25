@@ -24,7 +24,7 @@ public class SquadRepository {
     }
 
     public static Squad findById(int squadId) throws SQLException {
-        String sql = "Select * from squad where id  ?=";
+        String sql = "Select * from squad where id = ?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,squadId);
