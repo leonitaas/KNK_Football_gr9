@@ -54,36 +54,6 @@ public class TeamRepository {
     }
 
 
-
-        // Other repository methods...
-
-        public static void update(Team team) throws SQLException {
-            Connection connection = ConnectionUtil.getConnection();
-            try {
-                connection.setAutoCommit(false);
-
-                String sql = "UPDATE team SET name = ?, stadium = ?, team_logo = ? WHERE id = ?";
-                PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setString(1, team.getName());
-                statement.setString(2, team.getStadium());
-                statement.setString(3, team.getLogo());
-                statement.setInt(4, team.getId());
-                statement.executeUpdate();
-
-                connection.commit();
-            } catch (SQLException ex) {
-                connection.rollback();
-                throw ex;
-            } finally {
-                if (connection != null) {
-                    connection.setAutoCommit(true);
-                    connection.close();
-                }
-            }
-        }
-
-
-
     public static void Delete(TableView<Team> teamTable) {
         int index = teamTable.getSelectionModel().getSelectedIndex();
         int id = teamTable.getItems().get(index).getId();
