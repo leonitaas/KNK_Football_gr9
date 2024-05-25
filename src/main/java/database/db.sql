@@ -185,3 +185,9 @@ VALUES (3, 1, 1, 1, '2023-07-12 20:00:00');
 INSERT INTO league_matches (league_id, match_id) VALUES (1, 1);
 INSERT INTO league_matches (league_id, match_id) VALUES (2, 2);
 INSERT INTO league_matches (league_id, match_id) VALUES (3, 3);
+
+ALTER TABLE player_statistics
+    ADD CONSTRAINT fk_player
+        FOREIGN KEY (player_id)
+            REFERENCES player(id)
+            ON DELETE SET NULL;
