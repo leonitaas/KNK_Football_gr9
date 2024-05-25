@@ -1,10 +1,8 @@
 package controllers;
 
-
 import models.League;
 import models.Team;
 import repository.LeagueRepository;
-import repository.PlayerRepository;
 import repository.TeamRepository;
 import service.BrowseImage;
 import service.CostumedAlerts;
@@ -24,8 +22,8 @@ import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
 public class manageTeamsController extends  TranslatorController implements Initializable {
+
 
     @FXML
     private Label league;
@@ -45,8 +43,20 @@ public class manageTeamsController extends  TranslatorController implements Init
 
 
     @FXML
+    private Button btnAddTeam;
 
-    private Button btnAddTeam,btnBrowse,btnDeleteTeam,btnUpdateTeam,btnClearTeam;
+    @FXML
+    private Button btnBrowse;
+
+    @FXML
+    public Button btnDeleteTeam;
+
+    @FXML
+    public Button btnUpdateTeam;
+
+    @FXML
+
+    public Button btnClearTeam;
 
 
     @FXML
@@ -169,12 +179,15 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     @FXML
     void deleteTeam(ActionEvent event) {
-
-
         TeamRepository.Delete(teamTable);
         fetchData();
+
     }
 
+    @FXML
+    void updateTeam(ActionEvent event) {
+
+    }
 
     @FXML
     void fetchFilteredData(ActionEvent event){
@@ -226,18 +239,12 @@ public class manageTeamsController extends  TranslatorController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        fetchData();
         LeagueRepository.setValues(this.choseLeague);
         LeagueRepository.setValues(this.choseLeagueToTable);
 
-
-        // Fetch data after setting up table columns
-
+        fetchData();
         getDataFromTable();
         changeLanguage();
     }
 
-    public void updateTeam(ActionEvent actionEvent) {
-    }
 }

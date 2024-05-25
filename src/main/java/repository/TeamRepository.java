@@ -54,11 +54,6 @@ public class TeamRepository {
     }
 
 
-
-        // Other repository methods...
-
-
-
     public static void Delete(TableView<Team> teamTable) {
         int index = teamTable.getSelectionModel().getSelectedIndex();
         int id = teamTable.getItems().get(index).getId();
