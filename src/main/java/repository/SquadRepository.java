@@ -39,7 +39,7 @@ public class SquadRepository {
     }
 
     public static Squad findIdByTeam(Team team) throws SQLException {
-        String sql = "Select id, team_id, coach_id from squad where team_id = ?";
+        String sql = "Select id, team_id from squad where team_id = ?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,team.getId());
