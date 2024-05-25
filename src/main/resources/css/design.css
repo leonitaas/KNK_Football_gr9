@@ -1,51 +1,176 @@
-.formsAndInput{
-    -fx-background-color:#4c525f;
-    -fx-text-color:#f3f0e9;
+/*dark blue: #006769
+medium green: #40A578
+light green: #9DDE8B
+light yellow: #FDDE55
+green: #65B741
+navy: #164B60
+*/
+/*--------------Login and register css-------------------------*/
+.logIn{
+-fx-background-color: linear-gradient(to top right, #164B60, #65B741 );
 }
-
-.ribbon{
--fx-background-color: #65B741 ;
+.register{
+-fx-background-color: linear-gradient(to top right, #164B60, #65B741);
 }
-
-
+.spaces{
+-fx-cursor: hand;
+}
+.spaces:hover{
+-fx-background-color: #164B60;
+}
+.button{
+-fx-cursor: hand;
+-fx-background-color: black;
+}
+.button:hover{
+-fx-background-color: #164B60;
+}
+.link{
+-fx-cursor: hand;
+}
+.link:hover{
+-fx-background-color: #164B60;
+}
+/*------------Home css---------------------*/
 .wall{
 -fx-background-color:#164B60;
 }
-.matchbutton{
+/*--------Navbar  css-----------------------------*/
+.navbarVbox{
+-fx-background-color: white;
+}
+.nav-btn{
+-fx-cursor: hand;
+-fx-background-color: #164B60;
+-fx-background-radius: 10;
+}
+.nav-btn:hover{
+-fx-background-color: #9DDE8B ;
+}
+/*---------Match css------------------------------*/
+.match{
 -fx-background-color:  #9DDE8B;
 -fx-cursor: hand;
 }
-.matchbutton:hover{
+.match:hover{
 -fx-background-color: #65B741;
 }
-.tabelsmatch{
+.tableMatch{
 -fx-background-color: #FDDE55;
 -fx-cursor: hand;
 }
-.tabelsmatch:hover{
+.tableMatch:hover{
 -fx-background-color: #9DDE8B;
 }
-.teambutton{
+/*--------------Team css---------------------*/
+.teamButton{
 -fx-background-color:  #9DDE8B;
 -fx-cursor: hand;
 }
-.teambutton:hover{
+.teamButton:hover{
 -fx-background-color: #65B741 ;
 }
-.tabela{
+.table{
 -fx-cursor: hand;
 }
-.liga{
+/*----------Player css-----------------------*/
+
+.inputs{
+        -fx-border-color: #ccc;
+        -fx-border-width: 2px;
+        -fx-border-radius: 10px;
+        -fx-text-fill: black;
+        -fx-background-color: white;
+        -fx-faint-focus-color: transparent;
+}
+.inputs:hover{
+  -fx-background-color:#9DDE8B;
+}
+.label{
+ -fx-text-fill: rgb(255, 255, 255);
+ -fx-font-size: 12px;
+ -fx-font-weight: bold;
+ -fx-margin-top: 10px;
+}
+.combo-box .arrow-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #164B60;
+    -fx-background-radius: 10px;
+}
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+.combo-box .list-cell {
+
+    -fx-text-fill: black;
+}
+.combo-box {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 11px;
+}
+.combo-box .arrow-button:hover{
+  -fx-background-color: #9DDE8B;
+}
+.btn, .btn1 {
+    -fx-background-color: #9DDE8B;
+    -fx-text-fill: #343434;
+    -fx-background-radius: 11px;
+    -fx-border-radius: 10px;
+    -fx-font-weight: bold;
+}
+.btn:hover {
+    -fx-background-color: #40A578;
+    -fx-cursor: hand;
+}
+.green:hover{
+    -fx-background-color:  RGB(0, 128, 0);
+    -fx-cursor: hand;
+}
+.red:hover{
+-fx-background-color:#B22222;
+    -fx-cursor: hand;
+}
+.playerTable {
+-fx-background-color:white;
+-fx-border-radius: 0 0 15 15;
+-fx-background-radius: 0 0 15 15;
+-fx-cursor: hand;
+
+}
+.playerTable:hover{
+-fx-background-color: #9DDE8B;
+}
+.col{
+-fx-background-color: #9DDE8B;
+-fx-text-fill: #A9A9A9;
+}
+.playerSpaces{
+-fx-cursor: hand;
+}
+.playerSpaces:hover{
+-fx-background-color:#9DDE8B;
+}
+/*---------------League css--------------------*/
+.league{
 -fx-background-color: #9DDE8B;
 -fx-cursor: hand;
 }
-.liga:hover{
+.league:hover{
 -fx-background-color: #65B741 ;
 }
-.ligabutton{
--fx-background-color: #FDDE55;
+.leagueButton{
+-fx-background-color: #65B741;
 -fx-cursor: hand;
 }
-.ligabutton:hover{
+.leagueButton:hover{
 -fx-background-color:#9DDE8B ;
+}
+/*--------------Goal css---------------*/
+.goalButton{
+-fx-text-fill: black;
 }

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="867.0" stylesheets="@../css/player.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.manageMatchController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="915.0" stylesheets="@../css/design.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.manageMatchController">
    <children>
-      <AnchorPane layoutX="250.0" layoutY="-5.0" prefHeight="594.0" prefWidth="618.0" style="-fx-background-color: #164B60;" stylesheets="@../css/match.css">
+      <AnchorPane layoutX="250.0" layoutY="-5.0" prefHeight="558.0" prefWidth="667.0" style="-fx-background-color: #164B60;">
          <children>
             <GridPane alignment="TOP_CENTER" layoutX="122.0" layoutY="28.0" prefHeight="129.0" prefWidth="395.0">
               <columnConstraints>
@@ -30,13 +30,13 @@
               </rowConstraints>
                <children>
                   <Label text="Choose Data" />
-                  <DatePicker fx:id="choseDate" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="choseDate" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
                   <Label text="Select League" GridPane.columnIndex="2" />
-                  <ComboBox fx:id="choseLeagueMatch" prefWidth="150.0" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="choseLeagueMatch" prefWidth="150.0" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Select Team" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="choseHomeTeam" prefWidth="150.0" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="choseHomeTeam" prefWidth="150.0" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="3" />
                   <Label text="Select Team" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="choseAwayTeam" prefWidth="150.0" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="choseAwayTeam" prefWidth="150.0" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <GridPane layoutX="70.0" layoutY="202.0">
@@ -52,9 +52,9 @@
               </rowConstraints>
                <children>
                   <Label fx:id="txtHomeTeamName" text="Team Name" />
-                  <TextField fx:id="fieldHomeTeamGoal" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="1" />
+                  <TextField fx:id="fieldHomeTeamGoal" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="1" />
                   <Label text="               :" GridPane.columnIndex="2" />
-                  <TextField fx:id="fieldAwayTeamGoal" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="3" />
+                  <TextField fx:id="fieldAwayTeamGoal" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="3" />
                   <Label fx:id="txtAwayTeamName" text="        Team Name" GridPane.columnIndex="4" />
                </children>
             </GridPane>
@@ -73,18 +73,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="txtHomePossesion" styleClass="tabelsmatch" stylesheets="@../css/design.css" />
-                  <TextField fx:id="txtHomeShots" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtHomeCorner" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtHomeFouls" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtHomeYellowCard" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="4" />
-                  <TextField fx:id="txtHomeRedCard" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.rowIndex="5" />
-                  <TextField fx:id="txtAwayPossesion" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" />
-                  <TextField fx:id="txtAwayShots" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtAwayCorners" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtAwayFouls" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtAwayYellowCard" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="txtAwayRedCard" styleClass="tabelsmatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="txtHomePossesion" styleClass="tableMatch" stylesheets="@../css/design.css" />
+                  <TextField fx:id="txtHomeShots" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtHomeCorner" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtHomeFouls" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtHomeYellowCard" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtHomeRedCard" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.rowIndex="5" />
+                  <TextField fx:id="txtAwayPossesion" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" />
+                  <TextField fx:id="txtAwayShots" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtAwayCorners" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtAwayFouls" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtAwayYellowCard" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtAwayRedCard" styleClass="tableMatch" stylesheets="@../css/design.css" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                   <Label text="       Possession" GridPane.columnIndex="1" />
                   <Label text="           Shots" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="        Corners" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -93,19 +93,19 @@
                   <Label text="      Red Cards" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button layoutX="187.0" layoutY="455.0" mnemonicParsing="false" styleClass="matchbutton" stylesheets="@../css/design.css" text="Add Match">
+            <Button layoutX="187.0" layoutY="455.0" mnemonicParsing="false" styleClass="match" stylesheets="@../css/design.css" text="Add Match">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="376.0" layoutY="455.0" mnemonicParsing="false" styleClass="matchbutton" stylesheets="@../css/design.css" text="Clear Fields">
+            <Button layoutX="376.0" layoutY="455.0" mnemonicParsing="false" styleClass="match" stylesheets="@../css/design.css" text="Clear Fields">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <VBox prefHeight="593.0" prefWidth="250.0">
+      <VBox prefHeight="550.0" prefWidth="250.0">
           <children>
               <fx:include source="navbar_form.fxml" />
           </children>
