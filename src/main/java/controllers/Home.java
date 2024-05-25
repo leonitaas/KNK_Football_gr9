@@ -58,7 +58,7 @@ public class Home implements Initializable {
     private void fetchDataFromdb() {
         String url = "jdbc:mysql://localhost:3306/knk_football";
         String user = "root";
-        String password = "Art@1234";
+        String password = "leonita123";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              Statement stmt = conn.createStatement()) {
