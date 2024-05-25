@@ -100,7 +100,7 @@ public class TeamRepository {
     }
     public static void fetchToTableByLeague(TableView<Team> table,
                                             TableColumn<Team, Integer> colId, TableColumn<Team,String > colName, TableColumn<Team,String> colStadium,
-                                             TableColumn<Team, League> colLeague, League league
+                                            TableColumn<Team, League> colLeague, League league
     ) throws SQLException {
 
         ObservableList<Team> teams = FXCollections.observableArrayList();
@@ -129,7 +129,7 @@ public class TeamRepository {
     }
     static void objectToTable(TableView<Team> table,
                               TableColumn<Team, Integer> colId, TableColumn<Team,String > colName, TableColumn<Team,String> colStadium,
-                               TableColumn<Team, League> colLeague, ObservableList<Team> teams){
+                              TableColumn<Team, League> colLeague, ObservableList<Team> teams){
         table.setItems(teams);
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -138,7 +138,7 @@ public class TeamRepository {
     }
 
     public static Team findById(int teamId) throws SQLException {
-        String sql = "Select * from team where id = team_id";
+        String sql = "Select * from team where id = ?";
         Connection connection = ConnectionUtil.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,teamId);
