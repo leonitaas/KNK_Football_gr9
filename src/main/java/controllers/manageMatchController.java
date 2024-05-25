@@ -29,13 +29,13 @@ import service.LanguageUtil;
 public class manageMatchController implements Initializable {
 
     @FXML
-    private ComboBox<Team> choseAwayTeam;
+    private ComboBox<?> choseAwayTeam;
 
     @FXML
     private DatePicker choseDate;
 
     @FXML
-    private ComboBox<Team> choseHomeTeam;
+    private ComboBox<?> choseHomeTeam;
 
     @FXML
     private ComboBox<League> choseLeagueMatch;
@@ -181,7 +181,7 @@ public class manageMatchController implements Initializable {
         });
     }
 
-//    @Override
+    //    @Override
 //    public void initialize(URL url, ResourceBundle resourceBundle) {
 ////        List<String> leagueMatchOptions = Servise.getLeagueMatchOptions();
 //        /*
@@ -192,10 +192,34 @@ public class manageMatchController implements Initializable {
 ////        this.choseLeagueMatch.getItems().addAll(leagueMatchOptions);
 //        //propozimi i Blendit
 //    }
+    private void configureEnterKeyNavigation() {
+        choseDate.setOnAction(e -> choseLeagueMatch.requestFocus());
+        choseLeagueMatch.setOnAction(e -> choseHomeTeam.requestFocus());
+        choseHomeTeam.setOnAction(e -> choseAwayTeam.requestFocus());
+        choseAwayTeam.setOnAction(e -> fieldHomeTeamGoal.requestFocus());
+        fieldHomeTeamGoal.setOnAction(e -> fieldAwayTeamGoal.requestFocus());
+        fieldAwayTeamGoal.setOnAction(e -> txtHomePossesion.requestFocus());
+        txtHomePossesion.setOnAction(e -> txtHomeShots.requestFocus());
+        txtHomeShots.setOnAction(e -> txtHomeCorner.requestFocus());
+        txtHomeCorner.setOnAction(e -> txtHomeFouls.requestFocus());
+        txtHomeFouls.setOnAction(e -> txtHomeYellowCard.requestFocus());
+        txtHomeYellowCard.setOnAction(e -> txtHomeRedCard.requestFocus());
+        txtHomeRedCard.setOnAction(e -> txtAwayPossesion.requestFocus());
+        txtAwayPossesion.setOnAction(e -> txtAwayShots.requestFocus());
+        txtAwayShots.setOnAction(e -> txtAwayCorners.requestFocus());
+        txtAwayCorners.setOnAction(e -> txtAwayFouls.requestFocus());
+        txtAwayFouls.setOnAction(e -> txtAwayYellowCard.requestFocus());
+        txtAwayYellowCard.setOnAction(e -> txtAwayRedCard.requestFocus());
 
+
+        // Handling button press on Enter
+
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LeagueRepository.setValues(this.choseLeagueMatch);
+        configureEnterKeyNavigation();
 
 
     }
