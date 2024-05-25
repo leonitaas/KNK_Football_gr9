@@ -25,11 +25,6 @@ import java.util.ResourceBundle;
 
 public class Home implements Initializable {
 
-    @FXML
-    private Label Menu;
-
-    @FXML
-    private Label MenuBack;
 
     @FXML
     private AnchorPane slider;
@@ -42,38 +37,17 @@ public class Home implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        slider.setTranslateX(-260);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(0);
-            slide.play();
-
             slider.setTranslateX(-260);
+            animateSlider(0);
 
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(false);
-                MenuBack.setVisible(true);
-            });
-        });
+        }
 
-        MenuBack.setOnMouseClicked(event -> {
+        private void animateSlider(double toX) {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.4));
             slide.setNode(slider);
-
-            slide.setToX(-260);
+            slide.setToX(toX);
             slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(true);
-                MenuBack.setVisible(false);
-            });
-        });
 
         // Initialize the list
         leagues = new ArrayList<>();
@@ -84,7 +58,7 @@ public class Home implements Initializable {
     private void fetchDataFromdb() {
         String url = "jdbc:mysql://localhost:3306/knk_football";
         String user = "root";
-        String password = "leonita123";
+        String password = "Art@1234";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              Statement stmt = conn.createStatement()) {

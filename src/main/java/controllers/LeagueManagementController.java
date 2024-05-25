@@ -1,21 +1,22 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.League;
+import models.Team;
 import repository.LeagueRepository;
 import service.BrowseImage;
+import service.CostumedAlerts;
 import service.ImagesToResources;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,18 +85,34 @@ public class LeagueManagementController implements Initializable {
     }
 
     @FXML
-    private void updateLeague() {
+    private void updateLeague(ActionEvent event) {
         League selectedLeague = tableLeagues.getSelectionModel().getSelectedItem();
-        if (selectedLeague != null) {
-            selectedLeague.setName(txtLeagueName.getText());
-            try {
+        if (selectedLeague == null) {
+            CostumedAlerts.costumeAlert(Alert.AlertType.WARNING, "Update League", "Update League", "Please select a league to update.");
+            return;
+        }
+
+        // Updating the name from the text field.
+        String newName = txtLeagueName.getText();
+        selectedLeague.setName(newName);
+
+        try {
+            // Check if a new image file was selected before updating.
+            if (fileSource != null) {
                 LeagueRepository.Update(tableLeagues, selectedLeague, fileSource.toPath(), imageName);
-                fetchLeagues();
-            } catch (Exception e) {
-                logger.log(Level.SEVERE, "Error updating league", e);
+            } else {
+                // Optionally handle the situation where no new image file is selected
+                LeagueRepository.UpdateWithoutImage(selectedLeague);
             }
+            fetchLeagues();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error updating league", e);
+            CostumedAlerts.costumeAlert(Alert.AlertType.ERROR, "Update League", "Update Failed", "Failed to update the league: " + e.getMessage());
         }
     }
+
+
+
 
     @FXML
     private void deleteLeague() {
